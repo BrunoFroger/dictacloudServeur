@@ -16,24 +16,29 @@ if (isset($_SESSION['PSEUDO'])) {
 	$Pseudo = " ";
 }
 
-$uploaddir = '/var/www/uploads/';
-$uploadfile = $uploaddir . basename($_FILES['userfile']['name']);
+$result="KO";
 
-echo '<pre>';
-if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)) {
-    echo "Le fichier est valide, et a été téléchargé
-           avec succès. Voici plus d'informations :\n";
-} else {
-    echo "Attaque potentielle par téléchargement de fichiers.
-          Voici plus d'informations :\n";
-}
+if ($_FILES['file']['uploadFile'] === UPLOAD_ERR_OK) { 
+/**
+* Do the upload process mentioned above
+**/
+	$target_dir = "uploads/";
+	$target_dir = $target_dir . basename( $_FILES["uploadFile"]["name"]);
+	$uploadOk=1;
 
-echo 'Voici quelques informations de débogage :';
-print_r($_FILES);
+	if (move_uploaded_file($_FILES["uploadFile"]["tmp_name"], $target_dir)) {
+	    echo "The file ". basename( $_FILES["uploadFile"]["name"]). " has been uploaded.";
+	$result="OK";
+	} else {
+	    echo "Sorry, there was an error uploading your file.";
+	}
+} else { 
+/**
+* There were an error
+**/ 
+	    echo "Sorry, there was no file to upload.";
+} 
 
-echo '</pre>';
-
-$result="OK";
 
 
 echo "sendPhoto" . ":";
