@@ -6,8 +6,6 @@
  * and open the template in the editor.
  */
 
-
-session_start();
 $myIncludePath = '/var/www/html/dictacloud';
 set_include_path(get_include_path() . PATH_SEPARATOR . $myIncludePath); 
 
