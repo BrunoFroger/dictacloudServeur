@@ -18,26 +18,28 @@ if (isset($_SESSION['PSEUDO'])) {
 
 $result="KO";
 
-if ($_FILES['file']['uploadFile'] === UPLOAD_ERR_OK) { 
-/**
-* Do the upload process mentioned above
-**/
-	$target_dir = "uploads/";
-	$target_dir = $target_dir . basename( $_FILES["uploadFile"]["name"]);
-	$uploadOk=1;
+if (isset($_FILE)){
+	if ($_FILES['file']['uploadFile'] === UPLOAD_ERR_OK) { 
+	/**
+	* Do the upload process mentioned above
+	**/
+		$target_dir = "uploads/";
+		$target_dir = $target_dir . basename( $_FILES["uploadFile"]["name"]);
+		$uploadOk=1;
 
-	if (move_uploaded_file($_FILES["uploadFile"]["tmp_name"], $target_dir)) {
-	    echo "The file ". basename( $_FILES["uploadFile"]["name"]). " has been uploaded.";
-	$result="OK";
-	} else {
-	    echo "Sorry, there was an error uploading your file.";
-	}
-} else { 
-/**
-* There were an error
-**/ 
+		if (move_uploaded_file($_FILES["uploadFile"]["tmp_name"], $target_dir)) {
+		    echo "The file ". basename( $_FILES["uploadFile"]["name"]). " has been uploaded.";
+		$result="OK";
+		} else {
+		    echo "Sorry, there was an error uploading your file.";
+		}
+	} else { 
+	/**
+	* There were an error
+	**/ 
 	    echo "Sorry, there was no file to upload.";
-} 
+	} 	
+}
 
 
 
