@@ -39,6 +39,8 @@ if (isset($_FILE)){
 	**/ 
 	    echo "Sorry, there was no file to upload.";
 	} 	
+} else {
+	echo "Sorry, there was no file to upload.";
 }
 
 
