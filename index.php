@@ -91,6 +91,7 @@ if ($Requete != ""){
                     $result="OK";
                 }            
             }
+            $user->result($Requete,$result);
             break; 
         case 'subsribe':
             if ($Pseudo == "" || $Email == "" || $Passwd == ""){
@@ -109,6 +110,7 @@ if ($Requete != ""){
                     $result="OK";
                 }            
             }
+            $user->result($Requete,$result);
             break; 
         case 'unsubsribe':
             if ($Pseudo == "" && $Email == ""){
@@ -127,14 +129,14 @@ if ($Requete != ""){
                     $result="OK";
                 }            
             }
+            $user->result($Requete,$result);
             break; 
         case 'sendPhoto':
             include_once 'controleurs/storePhoto.php';
             break;
         default:
             $result="Error => requete [" . $Requete . "] inconnue";
+            $user->result($Requete,$result);
             break;
     }
 }
-//echo ("generation du resultat " . $Requete . "; " .$result);
-$user->result($Requete,$result);

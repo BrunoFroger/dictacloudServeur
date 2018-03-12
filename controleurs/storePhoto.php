@@ -14,4 +14,8 @@ set_include_path(get_include_path() . PATH_SEPARATOR . $myIncludePath);
 header( 'content-type: text/html; charset=utf-8' );
 
 
-echo "Stockage de la photo sur le serveur";
+$result="OK";
+
+
+echo "sendPhoto" . ":";
+echo $result . "";
