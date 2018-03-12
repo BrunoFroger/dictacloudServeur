@@ -13,7 +13,7 @@ header( 'content-type: text/html; charset=utf-8' );
 if (isset($_SESSION['PSEUDO'])) {
      $Pseudo = $_POST['PSEUDO'];
 } else {
-	$pseudo = " ";
+	$Pseudo = " ";
 }
 
 
@@ -22,4 +22,4 @@ $result="OK";
 
 echo "sendPhoto" . ":";
 echo $result . ":";
-echo $pseudo;
+echo $Pseudo;
