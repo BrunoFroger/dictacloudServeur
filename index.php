@@ -128,6 +128,9 @@ if ($Requete != ""){
                 }            
             }
             break; 
+        case 'photo':
+            include_once 'controleurs/storePhoto.php';
+            break;
         default:
             $result="Error => requete [" . $Requete . "] inconnue";
             break;
