@@ -128,7 +128,7 @@ if ($Requete != ""){
                 }            
             }
             break; 
-        case 'photo':
+        case 'sendPhoto':
             include_once 'controleurs/storePhoto.php';
             break;
         default:
