@@ -17,6 +17,7 @@ if (isset($_SESSION['PSEUDO'])) {
 }
 
 $result="KO";
+$message="";
 
 if (isset($_FILE)){
 	if ($_FILES['file']['uploadFile'] === UPLOAD_ERR_OK) { 
@@ -28,23 +29,24 @@ if (isset($_FILE)){
 		$uploadOk=1;
 
 		if (move_uploaded_file($_FILES["uploadFile"]["tmp_name"], $target_dir)) {
-		    echo "The file ". basename( $_FILES["uploadFile"]["name"]). " has been uploaded.";
+		    $message = "The file ". basename( $_FILES["uploadFile"]["name"]). " has been uploaded.";
 		$result="OK";
 		} else {
-		    echo "Sorry, there was an error uploading your file.";
+		    $message = "Sorry, there was an error uploading your file.";
 		}
 	} else { 
 	/**
 	* There were an error
 	**/ 
-	    echo "Sorry, there was no file to upload.";
+	    $message = "Sorry, there was no file to upload.";
 	} 	
 } else {
-	echo "Sorry, there was no file to upload.";
+	$message = "Sorry, there was no file to upload.";
 }
 
 
 
 echo "sendPhoto" . ":";
 echo $result . ":";
-echo $Pseudo;
+echo $Pseudo . ":";
+echo $message;
