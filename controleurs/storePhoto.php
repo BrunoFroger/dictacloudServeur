@@ -17,9 +17,8 @@ if (isset($_SESSION['PSEUDO'])) {
 }
 
 $result="KO";
-$message="";
 
-echo "debut de storePhoto\n";
+$message = "debut de storePhoto\n";
 
 if (isset($_FILE)){
 	if ($_FILES['file']['uploadFile'] === UPLOAD_ERR_OK) { 
@@ -47,8 +46,8 @@ if (isset($_FILE)){
 }
 
 
-
-echo "sendPhoto" . ":";
+$requete="sendPhoto";
+echo $requete . ":";
 echo $result . ":";
 echo $Pseudo . ":";
 echo $message;
