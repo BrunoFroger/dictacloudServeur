@@ -65,7 +65,7 @@ if (isset($_POST['PASSWD'])) {
     unset($_SESSION['PASSWD']);
 }
 
-//echo ("[" . $Requete . ":" . $Pseudo . ":" . $Email . ":" . $Passwd . "]\n");
+echo ("[" . $Requete . ":" . $Pseudo . ":" . $Email . ":" . $Passwd . "]\n");
 //echo "\n--------------------\n";
 
 // contruction de la reponse
