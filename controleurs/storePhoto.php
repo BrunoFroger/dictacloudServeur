@@ -19,6 +19,8 @@ if (isset($_SESSION['PSEUDO'])) {
 $result="KO";
 $message="";
 
+echo "debut de storePhoto\n";
+
 if (isset($_FILE)){
 	if ($_FILES['file']['uploadFile'] === UPLOAD_ERR_OK) { 
 	/**
