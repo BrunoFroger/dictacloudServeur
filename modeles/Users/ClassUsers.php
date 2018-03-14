@@ -29,7 +29,7 @@ class User {
     }
 
     public function result($requete, $result){
-        echo "{"
+        echo "{";
         echo '"REQUETE":"' . $requete . "\":\"";
         echo 'RESULT":"' . $result . "\":\"";
         echo '"PSEUDO":"' . $this->Pseudo . "\":\"";
