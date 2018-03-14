@@ -35,6 +35,7 @@ echo "etape 2 index.php\n";
 
 //Receive the RAW post data.
 $content = trim(file_get_contents("php://input"));
+print_r($content);
  
 //Attempt to decode the incoming RAW post data from JSON.
 $decoded = json_decode($content, true);
