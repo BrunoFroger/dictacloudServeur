@@ -76,6 +76,12 @@ if (array_key_exists("PASSWD",$decoded)){
 }else{
     $Passwd = $vide;
 }
+if (array_key_exists("FILENAME",$decoded)){
+    $Filename = $decoded->{"FILENAME"};
+    $_SESSION['FILENAME'] = $Filename;
+}else{
+    $Filename = $vide;
+}
 
 
 //echo "requete = ". $Requete . "\n";

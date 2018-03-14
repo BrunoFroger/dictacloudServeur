@@ -15,6 +15,11 @@ if (isset($_SESSION['PSEUDO'])) {
 } else {
 	$Pseudo = " ";
 }
+if (isset($_SESSION['FILENAME'])) {
+     $Filename = $_SESSION['FILENAME'];
+} else {
+	$Filename = " ";
+}
 
 $result="KO";
 
