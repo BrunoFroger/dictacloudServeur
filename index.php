@@ -118,6 +118,7 @@ if ($Requete != ""){
             }else if (!$user->checkPseudo($Pseudo)){
                 $result="Erreur => unsubscribe => le pseudo " . $Pseudo . " n'existe pas";
             }
+            $user->delete();
             $user->result($Requete,$result);
             break; 
         case 'sendPhoto':
