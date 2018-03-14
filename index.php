@@ -12,6 +12,7 @@ set_include_path(get_include_path() . PATH_SEPARATOR . $myIncludePath);
 
 //header( 'content-type: text/html; charset=utf-8' );
 
+echo "debut index.php";
 
 
 //Make sure that it is a POST request.
