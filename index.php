@@ -54,21 +54,25 @@ $decoded = json_decode($content);
 $vide=" ";
 if (is_string($decoded->{"REQUETE"})){
     $Requete = $decoded->{"REQUETE"};
+    $_SESSION['REQUETE'] = $Requete;
 }else{
     $Requete = $vide;
 }
 if (is_string($decoded->{"PSEUDO"})){
     $Pseudo = $decoded->{"PSEUDO"};
+    $_SESSION['PSEUDO'] = $Pseudo;
 }else{
     $Pseudo = $vide;
 }
 if (is_string($decoded->{"EMAIL"})){
     $Email = $decoded->{"EMAIL"};
+    $_SESSION['EMAIL'] = $Email;
 }else{
     $Email = $vide;
 }
 if (is_string($decoded->{"PASSWD"})){
     $Passwd = $decoded->{"PASSWD"};
+    $_SESSION['PASSWD'] = $Passwd;
 }else{
     $Passwd = $vide;
 }
