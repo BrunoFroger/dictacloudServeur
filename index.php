@@ -59,6 +59,7 @@ $Email = $decoded->{"EMAIL"};
 
 echo "requete = ". $Requete . "\n";
 echo "pseudo  = ". $Pseudo . "\n";
+echo "email   = ". $Email . "\n";
 //$vide=" ";
 
 //echo "====================\n";
@@ -119,7 +120,6 @@ if (isset($_POST['PASSWD'])) {
 // contruction de la reponse
 
 //echo "traitement des commandes\n";
-exit;
 
 $user =  new User($Pseudo, $Email, $Passwd);
 
