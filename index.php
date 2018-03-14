@@ -50,7 +50,7 @@ if(!is_array($decoded)){
 echo "JSON OK\n";
 echo print_r($decoded);
 
-echo print_r($decoded->{'REQUETE'});
+echo print_r($decoded->{REQUETE});
 
 $Requete = $decoded->{'REQUETE'};
 
