@@ -49,6 +49,8 @@ if(!is_array($decoded)){
 
 echo "JSON OK\n";
 echo print_r($decoded);
+$decoded = json_decode($content);
+
 
 $Requete = $decoded->{"REQUETE"};
 $Pseudo = $decoded->{"PSEUDO"};
