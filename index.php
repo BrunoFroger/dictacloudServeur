@@ -53,14 +53,14 @@ echo print_r($decoded->{'REQUETE'});
 
 $Requete = $decoded->{'REQUETE'};
 
-$vide=" ";
+//$vide=" ";
 
 //echo "====================\n";
 //echo "serveur Dictacloud\n";
 //echo "--------------------\n";
 //echo "Analyse parametres :\n";
 
-include_once ('modeles/Users/ClassUsers.php');
+//include_once ('modeles/Users/ClassUsers.php');
 /*
 if (isset($_POST['REQUETE'])) {
      if ($_POST['REQUETE'] != "") {
