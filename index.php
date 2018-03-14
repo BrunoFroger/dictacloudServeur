@@ -18,12 +18,14 @@ echo "debut index.php";
 //Make sure that it is a POST request.
 if(strcasecmp($_SERVER['REQUEST_METHOD'], 'POST') != 0){
     throw new Exception('Request method must be POST!');
+    echo "Request method must be POST!\n";
 }
  
 //Make sure that the content type of the POST request has been set to application/json
 $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
 if(strcasecmp($contentType, 'application/json') != 0){
     throw new Exception('Content type must be: application/json');
+    echo "Content type must be: application/json\n";
 }
  
 //Receive the RAW post data.
@@ -35,10 +37,11 @@ $decoded = json_decode($content, true);
 //If json_decode failed, the JSON is invalid.
 if(!is_array($decoded)){
     throw new Exception('Received content contained invalid JSON!');
+    echo "Received content contained invalid JSON!\n";
 }
 
 
-echo "JSON OK";
+echo "JSON OK\n";
 
 
 $vide=" ";
