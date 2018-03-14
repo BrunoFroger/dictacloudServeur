@@ -49,7 +49,7 @@ if(!is_array($decoded)){
 echo "JSON OK\n";
 
 
-$requete=$decoded->{"REQUETE"};
+$Requete = $decoded->{"REQUETE"};
 
 $vide=" ";
 
