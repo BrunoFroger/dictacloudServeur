@@ -113,21 +113,10 @@ if ($Requete != ""){
             $user->result($Requete,$result);
             break; 
         case 'unsubsribe':
-            if ($Pseudo == "" && $Email == ""){
+            if ($Pseudo == ""){
                 $result="Erreur => unsubscribe => manque parametre";
-            }else{
-                //echo ("unsubscribe => <" . $Pseudo . "> ou <" . $Email . ">\n");
-                //$user->display();
-                if ($Email != "" && !$user->checkEmail($Email)){
-                    $result="Erreur => unsubscribe => l'email " . $Email . " n'existe pas";
-                } else if ($Pseudo != "" && !$user->checkPseudo($Pseudo)){
-                    $result="Erreur => unsubscribe => le pseudo " . $Pseudo . " n'existe pas";
-                } else {
-                    //echo ("unsubsribe user\n");
-                    //$user->display();
-                    $user->delete();
-                    $result="OK";
-                }            
+            }else if (!$user->checkPseudo($Pseudo)){
+                $result="Erreur => unsubscribe => le pseudo " . $Pseudo . " n'existe pas";
             }
             $user->result($Requete,$result);
             break; 
