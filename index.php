@@ -37,6 +37,8 @@ if(!is_array($decoded)){
 }
 
 
+echo "JSON OK";
+
 
 $vide=" ";
 
