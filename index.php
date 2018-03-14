@@ -55,6 +55,9 @@ $decoded = json_decode($content);
 $Requete = $decoded->{"REQUETE"};
 $Pseudo = $decoded->{"PSEUDO"};
 
+
+echo "requete = ". $Requete . "\n";
+echo "pseudo  = ". $Pseudo . "\n";
 //$vide=" ";
 
 //echo "====================\n";
