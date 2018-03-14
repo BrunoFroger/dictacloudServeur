@@ -55,11 +55,13 @@ $decoded = json_decode($content);
 $Requete = $decoded->{"REQUETE"};
 $Pseudo = $decoded->{"PSEUDO"};
 $Email = $decoded->{"EMAIL"};
+$Passwd = $decoded->{"PASSWD"};
 
 
 echo "requete = ". $Requete . "\n";
 echo "pseudo  = ". $Pseudo . "\n";
 echo "email   = ". $Email . "\n";
+echo "passwd  = ". $Passwd . "\n";
 //$vide=" ";
 
 //echo "====================\n";
