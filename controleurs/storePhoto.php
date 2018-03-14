@@ -11,7 +11,7 @@ set_include_path(get_include_path() . PATH_SEPARATOR . $myIncludePath);
 
 header( 'content-type: text/html; charset=utf-8' );
 if (isset($_SESSION['PSEUDO'])) {
-     $Pseudo = $_POST['PSEUDO'];
+     $Pseudo = $_SESSION['PSEUDO'];
 } else {
 	$Pseudo = " ";
 }
