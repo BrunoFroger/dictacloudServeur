@@ -51,18 +51,33 @@ if(!is_array($decoded)){
 //echo print_r($decoded);
 $decoded = json_decode($content);
 
-
-$Requete = $decoded->{"REQUETE"};
-$Pseudo = $decoded->{"PSEUDO"};
-$Email = $decoded->{"EMAIL"};
-$Passwd = $decoded->{"PASSWD"};
+$vide=" ";
+if (isset($de)->{"REQUETE"}){
+    $Requete = $decoded->{"REQUETE"};
+}else{
+    $Requete = $vide;
+}
+if (isset($de)->{"PSEUDO"}){
+    $Pseudo = $decoded->{"PSEUDO"};
+}else{
+    $Pseudo = $vide;
+}
+if (isset($de)->{"EMAIL"}){
+    $Email = $decoded->{"EMAIL"};
+}else{
+    $Email = $vide;
+}
+if (isset($de)->{"PASSWD"}){
+    $Passwd = $decoded->{"PASSWD"};
+}else{
+    $Passwd = $vide;
+}
 
 
 //echo "requete = ". $Requete . "\n";
 //echo "pseudo  = ". $Pseudo . "\n";
 //echo "email   = ". $Email . "\n";
 //echo "passwd  = ". $Passwd . "\n";
-//$vide=" ";
 
 //echo "====================\n";
 //echo "serveur Dictacloud\n";
