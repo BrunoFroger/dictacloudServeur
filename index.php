@@ -59,7 +59,7 @@ $vide=" ";
 //echo "Analyse parametres :\n";
 
 include_once ('modeles/Users/ClassUsers.php');
-
+/*
 if (isset($_POST['REQUETE'])) {
      if ($_POST['REQUETE'] != "") {
          $Requete = $_POST['REQUETE'];
@@ -103,8 +103,9 @@ if (isset($_POST['PASSWD'])) {
     $Passwd = $vide;
     unset($_SESSION['PASSWD']);
 }
+*/
 
-//echo ("[" . $Requete . ":" . $Pseudo . ":" . $Email . ":" . $Passwd . "]\n");
+echo ("[" . $Requete . ":" . $Pseudo . ":" . $Email . ":" . $Passwd . "]\n");
 //echo "\n--------------------\n";
 
 // contruction de la reponse
