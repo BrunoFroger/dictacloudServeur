@@ -52,22 +52,22 @@ if(!is_array($decoded)){
 $decoded = json_decode($content);
 
 $vide=" ";
-if (is_string($decoded->{"REQUETE"}){
+if (is_string($decoded->{"REQUETE"})){
     $Requete = $decoded->{"REQUETE"};
 }else{
     $Requete = $vide;
 }
-if (is_string($decoded->{"PSEUDO"}){
+if (is_string($decoded->{"PSEUDO"})){
     $Pseudo = $decoded->{"PSEUDO"};
 }else{
     $Pseudo = $vide;
 }
-if (is_string($decoded->{"EMAIL"}){
+if (is_string($decoded->{"EMAIL"})){
     $Email = $decoded->{"EMAIL"};
 }else{
     $Email = $vide;
 }
-if (is_string($decoded->{"PASSWD"}){
+if (is_string($decoded->{"PASSWD"})){
     $Passwd = $decoded->{"PASSWD"};
 }else{
     $Passwd = $vide;
