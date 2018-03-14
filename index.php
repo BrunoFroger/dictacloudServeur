@@ -64,7 +64,7 @@ if (is_string($decoded->{"PSEUDO"})){
 }else{
     $Pseudo = $vide;
 }
-if (is_object($decoded->{"EMAIL"})){
+if (array_key_exists("EMAIL",$decoded)){
     $Email = $decoded->{"EMAIL"};
     $_SESSION['EMAIL'] = $Email;
 }else{
