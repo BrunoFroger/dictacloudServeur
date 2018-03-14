@@ -107,12 +107,13 @@ if (isset($_POST['PASSWD'])) {
 }
 */
 
-echo ("[" . $Requete . ":" . $Pseudo . ":" . $Email . ":" . $Passwd . "]\n");
+//echo ("[" . $Requete . ":" . $Pseudo . ":" . $Email . ":" . $Passwd . "]\n");
 //echo "\n--------------------\n";
 
 // contruction de la reponse
 
 //echo "traitement des commandes\n";
+exit;
 
 $user =  new User($Pseudo, $Email, $Passwd);
 
