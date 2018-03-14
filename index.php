@@ -35,7 +35,7 @@ echo "etape 2 index.php\n";
 
 //Receive the RAW post data.
 $content = trim(file_get_contents("php://input"));
-print_r($content);
+echo $content;
  
 //Attempt to decode the incoming RAW post data from JSON.
 $decoded = json_decode($content, true);
@@ -50,9 +50,8 @@ if(!is_array($decoded)){
 echo "JSON OK\n";
 echo print_r($decoded);
 
-echo print_r($decoded->{REQUETE});
-
-$Requete = $decoded->{'REQUETE'};
+$Requete = $decoded->{"REQUETE"};
+$Pseudo = $decoded->{"PSEUDO"};
 
 //$vide=" ";
 
