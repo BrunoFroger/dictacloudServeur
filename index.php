@@ -50,7 +50,7 @@ echo "JSON OK\n";
 echo print_r($decoded);
 
 
-$Requete = $decoded->{"REQUETE"};
+$Requete = $decoded->{'REQUETE'};
 
 $vide=" ";
 
