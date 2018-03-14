@@ -11,8 +11,9 @@ $myIncludePath = '/var/www/html/dictacloud';
 set_include_path(get_include_path() . PATH_SEPARATOR . $myIncludePath); 
 
 //header( 'content-type: text/html; charset=utf-8' );
+header( 'content-type: application/json; charset=utf-8' );
 
-echo "debut index.php";
+echo "debut index.php\n";
 
 
 //Make sure that it is a POST request.
@@ -21,7 +22,7 @@ if(strcasecmp($_SERVER['REQUEST_METHOD'], 'POST') != 0){
     echo "Request method must be POST!\n";
 }
  
-echo "etape 1 index.php";
+echo "etape 1 index.php\n";
 
 //Make sure that the content type of the POST request has been set to application/json
 $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
@@ -30,7 +31,7 @@ if(strcasecmp($contentType, 'application/json') != 0){
     echo "Content type must be: application/json\n";
 }
  
-echo "etape 2 index.php";
+echo "etape 2 index.php\n";
 
 //Receive the RAW post data.
 $content = trim(file_get_contents("php://input"));
