@@ -117,6 +117,8 @@ if ($Requete != ""){
                 $result="Erreur => unsubscribe => manque parametre";
             }else if (!$user->checkPseudo($Pseudo)){
                 $result="Erreur => unsubscribe => le pseudo " . $Pseudo . " n'existe pas";
+            } else {
+                $result="OK";
             }
             $user->delete();
             $user->result($Requete,$result);
