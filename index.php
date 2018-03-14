@@ -49,6 +49,8 @@ if(!is_array($decoded)){
 echo "JSON OK\n";
 
 
+$requete=$decoded->{"REQUETE"};
+
 $vide=" ";
 
 //echo "====================\n";
