@@ -52,13 +52,13 @@ if(!is_array($decoded)){
 $decoded = json_decode($content);
 
 $vide=" ";
-if (is_string($decoded->{"REQUETE"})){
+if (array_key_exists("REQUETE",$decoded)){
     $Requete = $decoded->{"REQUETE"};
     $_SESSION['REQUETE'] = $Requete;
 }else{
     $Requete = $vide;
 }
-if (is_string($decoded->{"PSEUDO"})){
+if (array_key_exists("PSEUDO",$decoded)){
     $Pseudo = $decoded->{"PSEUDO"};
     $_SESSION['PSEUDO'] = $Pseudo;
 }else{
@@ -70,7 +70,7 @@ if (array_key_exists("EMAIL",$decoded)){
 }else{
     $Email = $vide;
 }
-if (is_string($decoded->{"PASSWD"})){
+if (array_key_exists("PASSWD",$decoded)){
     $Passwd = $decoded->{"PASSWD"};
     $_SESSION['PASSWD'] = $Passwd;
 }else{
