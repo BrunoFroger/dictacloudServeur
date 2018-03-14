@@ -29,11 +29,11 @@ class User {
     }
 
     public function result($requete, $result){
-        echo $requete . ":";
-        echo $result . ":";
-        echo $this->Pseudo . ":";
-        echo $this->Email . ":";
-        echo $this->Passwd;
+        echo "{"
+        echo "\"REQUETE\":\"" . $requete . "\":\"";
+        echo "\"RESULT\":\"" . $result . "\":\"";
+        echo "\"PSEUDO\":\"" . $this->Pseudo . "\":\"";
+        echo "}";
         //echo "\n";
     }
 
