@@ -47,6 +47,7 @@ if(!is_array($decoded)){
 
 
 echo "JSON OK\n";
+echo $decoded;
 
 
 $Requete = $decoded->{"REQUETE"};
