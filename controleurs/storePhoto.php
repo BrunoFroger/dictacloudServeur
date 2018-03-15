@@ -25,7 +25,7 @@ $result="KO";
 
 $message = "debut de storePhoto\n";
 
-if (isset($_SESSION['FILENAME'])){
+//if (isset($_SESSION['FILENAME'])){
 	//if ($_FILES['file']['uploadFile'] === UPLOAD_ERR_OK) { 
 	/**
 	* Do the upload process mentioned above
@@ -46,9 +46,9 @@ if (isset($_SESSION['FILENAME'])){
 	**/ 
 	    //$message = "Sorry, file " . $Filename . " not found to upload.";
 	//} 	
-} else {
-	$message = "Sorry, there was no file to upload.";
-}
+//} else {
+//	$message = "Sorry, there was no file to upload.";
+//}
 
 
 $requete="sendPhoto";
