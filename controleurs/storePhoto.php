@@ -50,7 +50,7 @@ if (isset($_SESSION['FILENAME'])){
 	$message = "Sorry, there was no file to upload.";
 }
 
-*/
+
 $requete="sendPhoto";
 echo $requete . ":";
 echo $result . ":";
