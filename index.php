@@ -18,24 +18,15 @@ header( 'Content-type: application/json; charset=utf-8' );
 
 //Make sure that it is a POST request.
 if(strcasecmp($_SERVER['REQUEST_METHOD'], 'POST') != 0){
-    throw new Exception('Request method must be POST!');
-    //echo "Request method must be POST!\n";
-}
- 
-//echo "etape 1 index.php\n";
-
-//Make sure that the content type of the POST request has been set to application/json
-$contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
-if(strcasecmp($contentType, 'application/json') != 0){
-    if (strcasecmp($contentType, 'application/octet-stream') == 0){
+    if (strcasecmp($_SERVER['REQUEST_METHOD'], 'GET') == 0){
         echo "index.php : detection octet-stream\n";
-        if (isset($_POST['PSEUDO'])) {
+        if (isset($_GET['PSEUDO'])) {
              $Pseudo = $_SESSION['PSEUDO'];
              echo "index.php : init PSEUDO " . $Pseudo . "\n";
         } else {
             $Pseudo = " ";
         }
-        if (isset($_POST['FILENAME'])) {
+        if (isset($_GET['FILENAME'])) {
              $Filename = $_SESSION['FILENAME'];
              echo "index.php : init FILENAME " . $Filename . "\n";
         } else {
@@ -43,9 +34,18 @@ if(strcasecmp($contentType, 'application/json') != 0){
         }
         include_once 'controleurs/storePhoto2.php';
     }else{
-        throw new Exception('Content type must be: application/json');
-        //echo "Content type must be: application/json\n";
+        throw new Exception('Request method must be POST!');
+        //echo "Request method must be POST!\n";
     }
+}
+ 
+//echo "etape 1 index.php\n";
+
+//Make sure that the content type of the POST request has been set to application/json
+$contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
+if(strcasecmp($contentType, 'application/json') != 0){
+    throw new Exception('Content type must be: application/json');
+    //echo "Content type must be: application/json\n";
 }
  
 //echo "etape 2 index.php\n";
