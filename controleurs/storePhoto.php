@@ -50,7 +50,7 @@ if (isset($_SESSION['FILENAME'])){
 		} else {
 		    $message = "Sorry, there was an error uploading your file.";
 		}
-	} //else { 
+	//} //else { 
 	/**
 	* There were an error
 	**/ 
