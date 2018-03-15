@@ -32,14 +32,6 @@ $result="KO";
 
 $message = "debut de storePhoto2\n";
 
-$requete="sendPhoto";
-echo $requete . ":";
-echo $result . ":";
-echo $Pseudo . ":";
-echo $Filename . ":";
-echo $message;
-exit;
-
 
 //if (isset($_SESSION['FILENAME'])){
 	//if ($_FILES['file']['uploadFile'] === UPLOAD_ERR_OK) { 
@@ -52,7 +44,7 @@ exit;
 
 		if (move_uploaded_file($_FILES["uploadFile"]["tmp_name"], $target_dir)) {
 		    $message = "The file ". basename( $_FILES["uploadFile"]["name"]). " has been uploaded.";
-		$result="OK";
+			$result="OK";
 		} else {
 		    $message = "Sorry, there was an error uploading your file.";
 		}
