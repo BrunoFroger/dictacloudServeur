@@ -23,7 +23,8 @@ if (isset($_SESSION['FILENAME'])) {
 if (isset($_SESSION['DATA'])) {
      $data = $_SESSION['DATA'];
      if ($Filename != " "){
-	     file_put_contents($$Filename, $data);
+     	echo "ecriture du fichier " . $filename;
+	    file_put_contents($$Filename, $data);
      }
 
 } else {

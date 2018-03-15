@@ -90,10 +90,12 @@ if (array_key_exists("DATA",$decoded)){
 }
 
 
-//echo "requete = ". $Requete . "\n";
-//echo "pseudo  = ". $Pseudo . "\n";
-//echo "email   = ". $Email . "\n";
-//echo "passwd  = ". $Passwd . "\n";
+echo "requete  = ". $Requete . "\n";
+echo "pseudo   = ". $Pseudo . "\n";
+echo "email    = ". $Email . "\n";
+echo "passwd   = ". $Passwd . "\n";
+echo "filename = ". $Filename . "\n";
+//echo "data     = ". $data . "\n";
 
 //echo "====================\n";
 //echo "serveur Dictacloud\n";
