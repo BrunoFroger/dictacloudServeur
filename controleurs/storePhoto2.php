@@ -32,14 +32,18 @@ $result="KO";
 
 $message = "debut de storePhoto2\n";
 
+$image = file_get_contents(__FILE__);
+$length = filesize(__FILE__);
+
+echo "taille du fichier lu = " . $length;
 
 //if (isset($_SESSION['FILENAME'])){
 	//if ($_FILES['file']['uploadFile'] === UPLOAD_ERR_OK) { 
 	/**
 	* Do the upload process mentioned above
 	**/
-		$target_dir = "uploads/";
-		$target_dir = $target_dir . basename( $_FILES["uploadFile"]["name"]);
+/*		$target_dir = "uploads/";
+		$target_dir = $target_dir . basename( $_FILES["uploadFile"][$Filename]);
 		$uploadOk=1;
 
 		if (move_uploaded_file($_FILES["uploadFile"]["tmp_name"], $target_dir)) {
@@ -63,4 +67,5 @@ $requete="sendPhoto";
 echo $requete . ":";
 echo $result . ":";
 echo $Pseudo . ":";
+echo $Filename . ":";
 echo $message;
