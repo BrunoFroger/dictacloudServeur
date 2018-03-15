@@ -21,14 +21,16 @@ if(strcasecmp($_SERVER['REQUEST_METHOD'], 'POST') != 0){
     if (strcasecmp($_SERVER['REQUEST_METHOD'], 'GET') == 0){
         echo "index.php : detection octet-stream\n";
         if (isset($_GET['PSEUDO'])) {
-             $Pseudo = $_SESSION['PSEUDO'];
-             echo "index.php : init PSEUDO " . $Pseudo . "\n";
+            $Pseudo = $_GET['PSEUDO'];
+            $_SESSION['PSEUDO'] = $Pseudo;
+            echo "index.php : init PSEUDO " . $Pseudo . "\n";
         } else {
             $Pseudo = " ";
         }
         if (isset($_GET['FILENAME'])) {
-             $Filename = $_SESSION['FILENAME'];
-             echo "index.php : init FILENAME " . $Filename . "\n";
+            $Filename = $_GET['FILENAME'];
+            $_SESSION['FILENAME'] = $Filename;
+            echo "index.php : init FILENAME " . $Filename . "\n";
         } else {
             $Filename = " ";
         }
