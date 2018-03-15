@@ -32,8 +32,10 @@ $result="KO";
 
 $message = "debut de storePhoto2\n";
 
+$target_dir = "uploads/";
+move_uploaded_file($_FILES["uploadFile"][$Filename], $target_dir)
 $image = file_get_contents($_FILES);
-$length = $image->length();
+$length = strlen($image);
 
 echo $image;
 echo "taille du fichier lu = " . $length . "\n";
