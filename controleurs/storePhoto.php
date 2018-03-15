@@ -30,7 +30,7 @@ if (isset($_SESSION['DATA'])) {
 } else {
 	$data = " ";
 }
-
+exit;
 $result="KO";
 
 $message = "debut de storePhoto\n";
