@@ -9,6 +9,7 @@
 $myIncludePath = '/var/www/html/dictacloud';
 set_include_path(get_include_path() . PATH_SEPARATOR . $myIncludePath); 
 
+
 header( 'content-type: text/html; charset=utf-8' );
 if (isset($_SESSION['PSEUDO'])) {
      $Pseudo = $_SESSION['PSEUDO'];
@@ -20,19 +21,6 @@ if (isset($_SESSION['FILENAME'])) {
 } else {
 	$Filename = " ";
 }
-if (isset($_SESSION['DATA'])) {
-     $data = $_SESSION['DATA'];
-     if ($Filename != " "){
-     	echo $data;
-     	echo "ecriture du fichier " . $Filename;
-	    file_put_contents("/tmp/".$Filename, $data);
-     }
-
-} else {
-	$data = " ";
-}
-exit;
-
 $result="KO";
 
 $message = "debut de storePhoto\n";

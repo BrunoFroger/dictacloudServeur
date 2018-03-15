@@ -154,6 +154,9 @@ $user =  new User($Pseudo, $Email, $Passwd);
 if ($Requete != ""){
     // analyse de la requete
     switch ($Requete){
+        //*********************    
+        //**    register
+        //*********************    
         case "register":
             if ($Pseudo == ""  || $Passwd == ""){
                 $result="Erreur => register => manque parametre"; 
@@ -170,6 +173,9 @@ if ($Requete != ""){
             }
             $user->result($Requete,$result);
             break; 
+        //*********************    
+        //**    subscribe
+        //*********************    
         case 'subsribe':
             if ($Pseudo == "" || $Email == "" || $Passwd == ""){
                 $result="Erreur => subscribe => manque parametre";
@@ -189,6 +195,9 @@ if ($Requete != ""){
             }
             $user->result($Requete,$result);
             break; 
+        //*********************    
+        //**    unsubscribe
+        //*********************    
         case 'unsubsribe':
             if ($Pseudo == ""){
                 $result="Erreur => unsubscribe => manque parametre";
@@ -200,9 +209,15 @@ if ($Requete != ""){
             $user->delete();
             $user->result($Requete,$result);
             break; 
+        //*********************    
+        //**    send Photo
+        //*********************    
         case 'sendPhoto':
             include_once 'controleurs/storePhoto.php';
             break;
+        //*********************    
+        //**    default
+        //*********************    
         default:
             $result="Error => requete [" . $Requete . "] inconnue";
             $user->result($Requete,$result);
