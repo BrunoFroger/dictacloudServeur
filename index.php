@@ -82,25 +82,13 @@ if (array_key_exists("FILENAME",$decoded)){
 }else{
     $Filename = $vide;
 }
-if (array_key_exists("DATA",$decoded)){
-    $data = $decoded->{"DATA"};
-    $_SESSION['DATA'] = $data;
-     if ($Filename != " "){
-        echo "data : " . $data;
-        echo "ecriture du fichier " . $Filename;
-        file_put_contents("/tmp/" . $Filename, $data);
-     }
-}else{
-    $data = $vide;
-}
-exit;
+
 
 echo "requete  = ". $Requete . "\n";
 echo "pseudo   = ". $Pseudo . "\n";
 echo "email    = ". $Email . "\n";
 echo "passwd   = ". $Passwd . "\n";
 echo "filename = ". $Filename . "\n";
-//echo "data     = ". $data . "\n";
 
 //echo "====================\n";
 //echo "serveur Dictacloud\n";
