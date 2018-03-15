@@ -44,7 +44,7 @@ if (isset($_FILE)){
 	/**
 	* There were an error
 	**/ 
-	    $message = "Sorry, there was no file to upload.";
+	    $message = "Sorry, file " . $Filename . " not found to upload.";
 	} 	
 } else {
 	$message = "Sorry, there was no file to upload.";

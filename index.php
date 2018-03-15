@@ -11,7 +11,7 @@ $myIncludePath = '/var/www/html/dictacloud';
 set_include_path(get_include_path() . PATH_SEPARATOR . $myIncludePath); 
 
 //header( 'content-type: text/html; charset=utf-8' );
-header( 'content-type: application/json; charset=utf-8' );
+header( 'Content-type: application/json; charset=utf-8' );
 
 //echo "debut index.php\n";
 
