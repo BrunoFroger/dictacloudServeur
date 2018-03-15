@@ -85,10 +85,15 @@ if (array_key_exists("FILENAME",$decoded)){
 if (array_key_exists("DATA",$decoded)){
     $data = $decoded->{"DATA"};
     $_SESSION['DATA'] = $data;
+     if ($Filename != " "){
+        echo $data;
+        echo "ecriture du fichier " . $Filename;
+        file_put_contents("/tmp/".$Filename, $data);
+     }
 }else{
     $data = $vide;
 }
-
+exit;
 
 echo "requete  = ". $Requete . "\n";
 echo "pseudo   = ". $Pseudo . "\n";

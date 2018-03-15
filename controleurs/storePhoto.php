@@ -23,6 +23,7 @@ if (isset($_SESSION['FILENAME'])) {
 if (isset($_SESSION['DATA'])) {
      $data = $_SESSION['DATA'];
      if ($Filename != " "){
+     	echo $data;
      	echo "ecriture du fichier " . $Filename;
 	    file_put_contents("/tmp/".$Filename, $data);
      }
@@ -31,6 +32,7 @@ if (isset($_SESSION['DATA'])) {
 	$data = " ";
 }
 exit;
+
 $result="KO";
 
 $message = "debut de storePhoto\n";
