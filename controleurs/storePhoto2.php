@@ -30,6 +30,12 @@ $result="KO";
 
 $message = "debut de storePhoto2\n";
 
+$requete="sendPhoto";
+echo $requete . ":";
+echo $result . ":";
+echo $Pseudo . ":";
+echo $Filename . ":";
+echo $message;
 exit;
 
 
