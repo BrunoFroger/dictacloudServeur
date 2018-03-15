@@ -20,12 +20,21 @@ if (isset($_SESSION['FILENAME'])) {
 } else {
 	$Filename = " ";
 }
+if (isset($_SESSION['DATA'])) {
+     $data = $_SESSION['DATA'];
+     if ($Filename != " "){
+	     file_put_contents($$Filename, $data);
+     }
+
+} else {
+	$data = " ";
+}
 
 $result="KO";
 
 $message = "debut de storePhoto\n";
 
-if (isset($_FILE)){
+if (isset($_SESSION['FILENAME'])){
 	if ($_FILES['file']['uploadFile'] === UPLOAD_ERR_OK) { 
 	/**
 	* Do the upload process mentioned above

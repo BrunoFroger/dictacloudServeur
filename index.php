@@ -82,6 +82,12 @@ if (array_key_exists("FILENAME",$decoded)){
 }else{
     $Filename = $vide;
 }
+if (array_key_exists("DATA",$decoded)){
+    $data = $decoded->{"DATA"};
+    $_SESSION['DATA'] = $data;
+}else{
+    $data = $vide;
+}
 
 
 //echo "requete = ". $Requete . "\n";
