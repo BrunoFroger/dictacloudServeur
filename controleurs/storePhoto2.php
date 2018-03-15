@@ -32,8 +32,8 @@ $result="KO";
 
 $message = "debut de storePhoto2\n";
 
-$image = file_get_contents(__FILE__);
-$length = filesize(__FILE__);
+$image = file_get_contents($_FILE);
+$length = $image->length();
 
 echo $image;
 echo "taille du fichier lu = " . $length . "\n";
