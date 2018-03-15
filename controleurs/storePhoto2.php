@@ -18,11 +18,13 @@ $content = trim(file_get_contents("php://input"));
 header( 'content-type: text/html; charset=utf-8' );
 if (isset($_SESSION['PSEUDO'])) {
      $Pseudo = $_SESSION['PSEUDO'];
+     echo "storePhoto2.php : recupere PSEUDO " . $Pseudo;
 } else {
 	$Pseudo = " ";
 }
 if (isset($_SESSION['FILENAME'])) {
      $Filename = $_SESSION['FILENAME'];
+     echo "storePhoto2.php : recupere FILENAME " . $Filename;
 } else {
 	$Filename = " ";
 }

@@ -30,11 +30,13 @@ if(strcasecmp($contentType, 'application/json') != 0){
     if (strcasecmp($contentType, 'application/octet-stream') == 0){
         if (isset($_POST['PSEUDO'])) {
              $Pseudo = $_SESSION['PSEUDO'];
+             echo "index.php : init PSEUDO " . $Pseudo;
         } else {
             $Pseudo = " ";
         }
         if (isset($_POST['FILENAME'])) {
              $Filename = $_SESSION['FILENAME'];
+             echo "index.php : init FILENAME " . $Filename;
         } else {
             $Filename = " ";
         }
