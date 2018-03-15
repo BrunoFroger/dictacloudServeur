@@ -14,27 +14,24 @@ echo "storePhoto2 : lecture des datas\n";
 
 $content = trim(file_get_contents("php://input"));
 
-echo $content;
-
-
-exit;
-
-
 
 header( 'content-type: text/html; charset=utf-8' );
-if (isset($_SESSION['PSEUDO'])) {
+if (isset($_POST['PSEUDO'])) {
      $Pseudo = $_SESSION['PSEUDO'];
 } else {
 	$Pseudo = " ";
 }
-if (isset($_SESSION['FILENAME'])) {
+if (isset($_POST['FILENAME'])) {
      $Filename = $_SESSION['FILENAME'];
 } else {
 	$Filename = " ";
 }
 $result="KO";
 
-$message = "debut de storePhoto\n";
+$message = "debut de storePhoto2\n";
+
+exit;
+
 
 //if (isset($_SESSION['FILENAME'])){
 	//if ($_FILES['file']['uploadFile'] === UPLOAD_ERR_OK) { 

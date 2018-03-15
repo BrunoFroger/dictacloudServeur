@@ -217,7 +217,14 @@ if ($Requete != ""){
         //**    send Photo
         //*********************    
         case 'sendPhoto':
-            include_once 'controleurs/storePhoto2.php';
+            include_once 'controleurs/storePhoto2
+
+
+
+
+
+
+            .php';
             break;
         //*********************    
         //**    default
