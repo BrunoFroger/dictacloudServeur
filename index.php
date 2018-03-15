@@ -28,15 +28,16 @@ if(strcasecmp($_SERVER['REQUEST_METHOD'], 'POST') != 0){
 $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
 if(strcasecmp($contentType, 'application/json') != 0){
     if (strcasecmp($contentType, 'application/octet-stream') == 0){
+        echo "index.php : detection octet-stream\n";
         if (isset($_POST['PSEUDO'])) {
              $Pseudo = $_SESSION['PSEUDO'];
-             echo "index.php : init PSEUDO " . $Pseudo;
+             echo "index.php : init PSEUDO " . $Pseudo . "\n";
         } else {
             $Pseudo = " ";
         }
         if (isset($_POST['FILENAME'])) {
              $Filename = $_SESSION['FILENAME'];
-             echo "index.php : init FILENAME " . $Filename;
+             echo "index.php : init FILENAME " . $Filename . "\n";
         } else {
             $Filename = " ";
         }
