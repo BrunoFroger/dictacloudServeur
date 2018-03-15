@@ -24,7 +24,7 @@ if (isset($_SESSION['DATA'])) {
      $data = $_SESSION['DATA'];
      if ($Filename != " "){
      	echo "ecriture du fichier " . $Filename;
-	    file_put_contents($Filename, $data);
+	    file_put_contents("/tmp/".$Filename, $data);
      }
 
 } else {
@@ -34,7 +34,7 @@ if (isset($_SESSION['DATA'])) {
 $result="KO";
 
 $message = "debut de storePhoto\n";
-
+/*
 if (isset($_SESSION['FILENAME'])){
 	//if ($_FILES['file']['uploadFile'] === UPLOAD_ERR_OK) { 
 	/**
@@ -60,7 +60,7 @@ if (isset($_SESSION['FILENAME'])){
 	$message = "Sorry, there was no file to upload.";
 }
 
-
+*/
 $requete="sendPhoto";
 echo $requete . ":";
 echo $result . ":";
