@@ -86,7 +86,7 @@ if (array_key_exists("DATA",$decoded)){
     $data = $decoded->{"DATA"};
     $_SESSION['DATA'] = $data;
      if ($Filename != " "){
-        echo "data : " . $data);
+        echo "data : " . $data;
         echo "ecriture du fichier " . $Filename;
         file_put_contents("/tmp/" . $Filename, $data);
      }
