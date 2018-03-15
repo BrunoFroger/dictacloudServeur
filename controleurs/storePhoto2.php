@@ -32,7 +32,7 @@ $result="KO";
 
 $message = "debut de storePhoto2\n";
 
-$image = file_get_contents($_FILE);
+$image = file_get_contents($_FILES);
 $length = $image->length();
 
 echo $image;
