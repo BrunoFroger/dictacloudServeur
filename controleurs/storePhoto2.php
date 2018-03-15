@@ -35,7 +35,9 @@ $message = "debut de storePhoto2\n";
 $image = file_get_contents(__FILE__);
 $length = filesize(__FILE__);
 
-echo "taille du fichier lu = " . $length;
+echo $image;
+echo "taille du fichier lu = " . $length . "\n";
+
 
 //if (isset($_SESSION['FILENAME'])){
 	//if ($_FILES['file']['uploadFile'] === UPLOAD_ERR_OK) { 
