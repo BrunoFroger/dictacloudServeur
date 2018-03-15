@@ -28,6 +28,16 @@ if(strcasecmp($_SERVER['REQUEST_METHOD'], 'POST') != 0){
 $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
 if(strcasecmp($contentType, 'application/json') != 0){
     if (strcasecmp($contentType, 'application/octet-stream') == 0){
+        if (isset($_POST['PSEUDO'])) {
+             $Pseudo = $_SESSION['PSEUDO'];
+        } else {
+            $Pseudo = " ";
+        }
+        if (isset($_POST['FILENAME'])) {
+             $Filename = $_SESSION['FILENAME'];
+        } else {
+            $Filename = " ";
+        }
         include_once 'controleurs/storePhoto2.php';
     }else{
         throw new Exception('Content type must be: application/json');
