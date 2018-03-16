@@ -20,28 +20,34 @@ header( 'Content-type: application/json; charset=utf-8' );
 if(strcasecmp($_SERVER['REQUEST_METHOD'], 'POST') != 0){
     if (strcasecmp($_SERVER['REQUEST_METHOD'], 'GET') == 0){
         echo "index.php : detection octet-stream\n";
+        if (isset($_GET['REQUETE'])) {
+            $Requete = $_GET['REQUETE'];
+            $_SESSION['REQUETE'] = $Requete;
+            //echo "index.php : init REQUETE " . $Requete . "\n";
+        } else {
+            $Pseudo = " ";
+        } 
         if (isset($_GET['PSEUDO'])) {
             $Pseudo = $_GET['PSEUDO'];
             $_SESSION['PSEUDO'] = $Pseudo;
-            echo "index.php : init PSEUDO " . $Pseudo . "\n";
+            //echo "index.php : init PSEUDO " . $Pseudo . "\n";
         } else {
             $Pseudo = " ";
         }
         if (isset($_GET['FILENAME'])) {
             $Filename = $_GET['FILENAME'];
             $_SESSION['FILENAME'] = $Filename;
-            echo "index.php : init FILENAME " . $Filename . "\n";
+            //echo "index.php : init FILENAME " . $Filename . "\n";
         } else {
             $Filename = " ";
         }
         if ($Filename != " " && $Pseudo != " "){
             // recuperation des datas envoyées et stockage dans un fichier
-            echo "index.php : recuperation des datas depuis la requete\n";
+            //echo "index.php : recuperation des datas depuis la requete\n";
             $imageData = file_get_contents("php://input");
-            $ficHandle = fopen($Filename);
+            $ficHandle = fopen("downloads/".$Filename);
             fwrite($ficHandle,$imageData);
-            echo $imageData;
-            fwrite();
+            echo "image sauvegardée\n";
             include_once 'controleurs/storePhoto2.php';
         }
         exit;

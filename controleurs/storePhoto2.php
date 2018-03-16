@@ -9,13 +9,19 @@
 $myIncludePath = '/var/www/html/dictacloud';
 set_include_path(get_include_path() . PATH_SEPARATOR . $myIncludePath); 
 
-echo "storePhoto2 : lecture des datas\n";
+echo "storePhoto2 : debut\n";
 
 
 $content = trim(file_get_contents("php://input"));
 
 
 header( 'content-type: text/html; charset=utf-8' );
+if (isset($_SESSION['REQUETE'])) {
+     $Requete = $_SESSION['REQUETE'];
+     echo "storePhoto2.php : recupere REQUETE " . $Requete . "\n";
+} else {
+	$Pseudo = " ";
+}
 if (isset($_SESSION['PSEUDO'])) {
      $Pseudo = $_SESSION['PSEUDO'];
      echo "storePhoto2.php : recupere PSEUDO " . $Pseudo . "\n";
@@ -30,7 +36,7 @@ if (isset($_SESSION['FILENAME'])) {
 }
 $result="KO";
 
-$message = "debut de storePhoto2\n";
+$message = "debut traitement dans storePhoto2\n";
 
 
 //if (isset($_SESSION['FILENAME'])){
@@ -58,8 +64,8 @@ $message = "debut de storePhoto2\n";
 //	$message = "Sorry, there was no file to upload.";
 //}
 
+$message=""
 
-$requete="sendPhoto";
 echo $requete . ":";
 echo $result . ":";
 echo $Pseudo . ":";
