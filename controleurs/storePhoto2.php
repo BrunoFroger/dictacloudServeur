@@ -38,34 +38,6 @@ $result="KO";
 
 $message = "debut traitement dans storePhoto2\n";
 
-
-//if (isset($_SESSION['FILENAME'])){
-	//if ($_FILES['file']['uploadFile'] === UPLOAD_ERR_OK) { 
-	/**
-	* Do the upload process mentioned above
-	**/
-/*		$target_dir = "uploads/";
-		$target_dir = $target_dir . basename( $_FILES["uploadFile"][$Filename]);
-		$uploadOk=1;
-
-		if (move_uploaded_file($_FILES["uploadFile"]["tmp_name"], $target_dir)) {
-		    $message = "The file ". basename( $_FILES["uploadFile"]["name"]). " has been uploaded.";
-			$result="OK";
-		} else {
-		    $message = "Sorry, there was an error uploading your file.";
-		}
-	//} //else { 
-	/**
-	* There were an error
-	**/ 
-	    //$message = "Sorry, file " . $Filename . " not found to upload.";
-	//} 	
-//} else {
-//	$message = "Sorry, there was no file to upload.";
-//}
-
-$message=""
-
 echo $Requete . ":";
 echo $result . ":";
 echo $Pseudo . ":";
