@@ -43,3 +43,4 @@ echo $result . ":";
 echo $Pseudo . ":";
 echo $Filename . ":";
 echo $message;
+exit;
