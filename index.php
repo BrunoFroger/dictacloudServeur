@@ -25,7 +25,7 @@ if(strcasecmp($_SERVER['REQUEST_METHOD'], 'POST') != 0){
             $_SESSION['REQUETE'] = $Requete;
             //echo "index.php : init REQUETE " . $Requete . "\n";
         } else {
-            $Pseudo = " ";
+            $Requete = " ";
         } 
         if (isset($_GET['PSEUDO'])) {
             $Pseudo = $_GET['PSEUDO'];

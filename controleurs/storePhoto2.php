@@ -20,7 +20,7 @@ if (isset($_SESSION['REQUETE'])) {
      $Requete = $_SESSION['REQUETE'];
      echo "storePhoto2.php : recupere REQUETE " . $Requete . "\n";
 } else {
-	$Pseudo = " ";
+	$Requete = " ";
 }
 if (isset($_SESSION['PSEUDO'])) {
      $Pseudo = $_SESSION['PSEUDO'];
