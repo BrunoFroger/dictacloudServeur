@@ -180,6 +180,26 @@ if (isset($_POST['PASSWD'])) {
     unset($_SESSION['PASSWD']);
 }
 
+if (isset($_POST['IMAGE'])) {
+    if ($_POST['IMAGE'] != "") {
+        $Image = $_POST['IMAGE'];
+        $_SESSION['IMAGE'] = $Image;
+        //echo ("Image=" . $Image);
+        //$imageData = file_get_contents("php://input");
+        $imageData=$image;
+        $ficHandle = fopen("downloads/".$Filename,"w");
+        fwrite($ficHandle,$imageData);
+        echo "index.php ; image sauvegardée ; taille = " . strlen($imageData) . "\n";
+        if (strlen($imageData) > 0){
+            include_once 'controleurs/storePhoto2.php';
+        }
+        exit;
+    } 
+} else {
+    $Passwd = $vide;
+    unset($_SESSION['IMAGE']);
+}
+
 
 //echo ("[" . $Requete . ":" . $Pseudo . ":" . $Email . ":" . $Passwd . "]\n");
 //echo "\n--------------------\n";
