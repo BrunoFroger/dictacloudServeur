@@ -186,7 +186,7 @@ if (isset($_POST['IMAGE'])) {
         $_SESSION['IMAGE'] = $Image;
         //echo ("Image=" . $Image);
         //$imageData = file_get_contents("php://input");
-        $imageData=$image;
+        $imageData=$Image;
         $ficHandle = fopen("downloads/".$Filename,"w");
         fwrite($ficHandle,$imageData);
         echo "index.php ; image sauvegardée ; taille = " . strlen($imageData) . "\n";
