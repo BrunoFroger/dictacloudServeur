@@ -37,7 +37,7 @@ class User {
         //echo "\n";
     }
 
-    public function resultWithPasswd()($requete, $result){
+    public function resultWithPasswd($requete, $result){
         result($requete, $result);
         echo $this->Passwd . ":";
 
