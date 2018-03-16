@@ -19,7 +19,7 @@ header( 'Content-type: application/json; charset=utf-8' );
 //Make sure that it is a POST request.
 if(strcasecmp($_SERVER['REQUEST_METHOD'], 'POST') != 0){
     if (strcasecmp($_SERVER['REQUEST_METHOD'], 'GET') == 0){
-        echo "index.php : detection octet-stream\n";
+        //echo "index.php : detection octet-stream\n";
         if (isset($_GET['REQUETE'])) {
             $Requete = $_GET['REQUETE'];
             $_SESSION['REQUETE'] = $Requete;
@@ -47,7 +47,7 @@ if(strcasecmp($_SERVER['REQUEST_METHOD'], 'POST') != 0){
             $imageData = file_get_contents("php://input");
             $ficHandle = fopen("downloads/".$Filename,"w");
             fwrite($ficHandle,$imageData);
-            echo "image sauvegardée\n";
+            echo "image sauvegardée ; taille = " . strlen($imageData) . "\n";
             include_once 'controleurs/storePhoto2.php';
         }
         exit;
