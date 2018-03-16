@@ -45,7 +45,7 @@ if(strcasecmp($_SERVER['REQUEST_METHOD'], 'POST') != 0){
             // recuperation des datas envoyées et stockage dans un fichier
             //echo "index.php : recuperation des datas depuis la requete\n";
             $imageData = file_get_contents("php://input");
-            $ficHandle = fopen("downloads/".$Filename);
+            $ficHandle = fopen("downloads/".$Filename,"w");
             fwrite($ficHandle,$imageData);
             echo "image sauvegardée\n";
             include_once 'controleurs/storePhoto2.php';
