@@ -50,7 +50,8 @@ if(strcasecmp($_SERVER['REQUEST_METHOD'], 'POST') != 0){
         //echo "Request method must be POST!\n";
     }
 }
- 
+
+/*
 //echo "etape 1 index.php\n";
 
 //Make sure that the content type of the POST request has been set to application/json
@@ -118,14 +119,14 @@ echo "pseudo   = ". $Pseudo . "\n";
 echo "email    = ". $Email . "\n";
 echo "passwd   = ". $Passwd . "\n";
 echo "filename = ". $Filename . "\n";
-
+*/
 //echo "====================\n";
 //echo "serveur Dictacloud\n";
 //echo "--------------------\n";
 //echo "Analyse parametres :\n";
 
 include_once ('modeles/Users/ClassUsers.php');
-/*
+
 if (isset($_POST['REQUETE'])) {
      if ($_POST['REQUETE'] != "") {
          $Requete = $_POST['REQUETE'];
@@ -169,7 +170,7 @@ if (isset($_POST['PASSWD'])) {
     $Passwd = $vide;
     unset($_SESSION['PASSWD']);
 }
-*/
+
 
 //echo ("[" . $Requete . ":" . $Pseudo . ":" . $Email . ":" . $Passwd . "]\n");
 //echo "\n--------------------\n";
