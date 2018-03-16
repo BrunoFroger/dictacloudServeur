@@ -41,7 +41,7 @@ if(strcasecmp($_SERVER['REQUEST_METHOD'], 'POST') != 0){
             $ficHandle = fopen($Filename);
             fwrite($ficHandle,$imageData);
             echo $imageData;
-            fwrite()
+            fwrite();
             include_once 'controleurs/storePhoto2.php';
         }
         exit;
