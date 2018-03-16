@@ -32,9 +32,6 @@ $result="KO";
 
 $message = "debut de storePhoto2\n";
 
-$target_dir = "uploads/";
-move_uploaded_file($_FILES[$Filename][$Filename], $target_dir);
-
 
 //if (isset($_SESSION['FILENAME'])){
 	//if ($_FILES['file']['uploadFile'] === UPLOAD_ERR_OK) { 

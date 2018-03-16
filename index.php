@@ -34,7 +34,13 @@ if(strcasecmp($_SERVER['REQUEST_METHOD'], 'POST') != 0){
         } else {
             $Filename = " ";
         }
-        include_once 'controleurs/storePhoto2.php';
+        if ($Filename != " " && $Pseudo != " "){
+            // recuperation des datas envoyées et stockage dans un fichier
+            $imageData = file_get_contents("php://input"); 
+            echo $imageData;
+            include_once 'controleurs/storePhoto2.php';
+        }
+        exit;
     }else{
         throw new Exception('Request method must be POST!');
         //echo "Request method must be POST!\n";
