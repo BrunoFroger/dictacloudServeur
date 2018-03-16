@@ -36,8 +36,12 @@ if(strcasecmp($_SERVER['REQUEST_METHOD'], 'POST') != 0){
         }
         if ($Filename != " " && $Pseudo != " "){
             // recuperation des datas envoyées et stockage dans un fichier
-            $imageData = file_get_contents("php://input"); 
+            echo "index.php : recuperation des datas depuis la requete\n";
+            $imageData = file_get_contents("php://input");
+            $ficHandle = fopen($Filename);
+            fwrite($ficHandle,$imageData);
             echo $imageData;
+            fwrite()
             include_once 'controleurs/storePhoto2.php';
         }
         exit;
