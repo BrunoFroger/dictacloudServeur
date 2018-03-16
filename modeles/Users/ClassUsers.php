@@ -28,12 +28,19 @@ class User {
         echo "Passwd   = " . $this->Passwd . "\n";
     }
 
-    public function result($requete, $result){
+    public function resultJson($requete, $result){
         echo "{";
         echo '"REQUETE":"' . $requete . "\":\"";
         echo 'RESULT":"' . $result . "\":\"";
         echo '"PSEUDO":"' . $this->Pseudo . "\":\"";
         echo "}";
+        //echo "\n";
+    }
+
+    public function result($requete, $result){
+        echo "REQUETE:" . $requete . ":";
+        echo "RESULT:" . $result . ":";
+        echo "PSEUDO:" . $this->Pseudo . ":";
         //echo "\n";
     }
 
