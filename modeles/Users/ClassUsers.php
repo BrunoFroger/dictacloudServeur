@@ -38,9 +38,10 @@ class User {
     }
 
     public function result($requete, $result){
-        echo "REQUETE:" . $requete . ":";
-        echo "RESULT:" . $result . ":";
-        echo "PSEUDO:" . $this->Pseudo . ":";
+        echo $requete . ":";
+        echo $result . ":";
+        echo $this->Pseudo . ":";
+        echo $this->Email . ":";
         //echo "\n";
     }
 
