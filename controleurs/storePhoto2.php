@@ -66,7 +66,7 @@ $message = "debut traitement dans storePhoto2\n";
 
 $message=""
 
-echo $requete . ":";
+echo $Requete . ":";
 echo $result . ":";
 echo $Pseudo . ":";
 echo $Filename . ":";
