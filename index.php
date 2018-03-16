@@ -180,6 +180,17 @@ if (isset($_POST['PASSWD'])) {
     unset($_SESSION['PASSWD']);
 }
 
+if (isset($_POST['FILENAME'])) {
+    if ($_POST['FILENAME'] != "") {
+        $Filename = $_POST['FILENAME'];
+        $_SESSION['FILENAME'] = $Filename;
+        //echo ("Filename=" . $Filename);
+    } 
+} else {
+    $Filename = $vide;
+    unset($_SESSION['FILENAME']);
+}
+
 if (isset($_POST['IMAGE'])) {
     if ($_POST['IMAGE'] != "") {
         $Image = $_POST['IMAGE'];
