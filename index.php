@@ -51,6 +51,7 @@ if(strcasecmp($_SERVER['REQUEST_METHOD'], 'POST') != 0){
     }
 }
 
+$vide=" ";
 /*
 //echo "etape 1 index.php\n";
 
@@ -81,7 +82,6 @@ if(!is_array($decoded)){
 //echo print_r($decoded);
 $decoded = json_decode($content);
 
-$vide=" ";
 if (array_key_exists("REQUETE",$decoded)){
     $Requete = $decoded->{"REQUETE"};
     $_SESSION['REQUETE'] = $Requete;
