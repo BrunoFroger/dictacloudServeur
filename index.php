@@ -44,11 +44,14 @@ if(strcasecmp($_SERVER['REQUEST_METHOD'], 'POST') != 0){
         if ($Filename != " " && $Pseudo != " "){
             // recuperation des datas envoyées et stockage dans un fichier
             //echo "index.php : recuperation des datas depuis la requete\n";
-            $imageData = trim(file_get_contents($_FILES));
+            $imageData = file_get_contents("php://input");
             $ficHandle = fopen("downloads/".$Filename,"w");
             fwrite($ficHandle,$imageData);
             echo "index.php ; image sauvegardée ; taille = " . strlen($imageData) . "\n";
-            include_once 'controleurs/storePhoto2.php';
+            if (strlen($imageData) > 0){
+                include_once 'controleurs/storePhoto2.php';
+            }
+            exit;
         }
         exit;
     }else{
