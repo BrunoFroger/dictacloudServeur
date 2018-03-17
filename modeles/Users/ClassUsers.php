@@ -16,9 +16,13 @@ class User {
     private $Passwd;
 
     public function User($myPseudo, $myEmail, $myPasswd){
-        $this->Pseudo=$myPseudo;
+        $this->Pseudo = $myPseudo;
         $this->Email = $myEmail;
         $this->Passwd = $myPasswd;
+    }
+
+    public function getEmail(){
+        return $this->Email;
     }
 
     public function display(){
@@ -28,11 +32,12 @@ class User {
         echo "Passwd   = " . $this->Passwd . "\n";
     }
 
-    public function resultJson($requete, $result){
+    public function result($requete, $result){
         echo "{";
-        echo '"REQUETE":"' . $requete . "\":\"";
-        echo 'RESULT":"' . $result . "\":\"";
-        echo '"PSEUDO":"' . $this->Pseudo . "\":\"";
+        echo '"REQUETE":"' . $requete . "\"";
+        echo ',"RESULT":"' . $result . "\"";
+        echo ',"PSEUDO":"' . $this->Pseudo . "\"";
+        echo ',"EMAIL":"' . $this->Email . "\"";
         echo "}";
         //echo "\n";
     }
@@ -43,18 +48,23 @@ class User {
 
     }
 
+    /*
     public function result($requete, $result){
         echo $requete . ":";
         echo $result . ":";
         echo $this->Pseudo . ":";
         echo $this->Email . ":";
         //echo "\n";
-    }
+    }*/
 
     private function clear(){
         $this->Pseudo="";
         $this->Email = "";
         $this->Passwd = "";
+    }
+
+    public function getUserByPseudo($pseudo){
+
     }
 
     public function checkPseudo($pseudo){

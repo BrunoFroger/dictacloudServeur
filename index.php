@@ -11,13 +11,14 @@ $myIncludePath = '/var/www/html/dictacloud';
 set_include_path(get_include_path() . PATH_SEPARATOR . $myIncludePath); 
 
 //header( 'content-type: text/html; charset=utf-8' );
-header( 'Content-type: application/json; charset=utf-8' );
+//header( 'Content-type: application/json; charset=utf-8' );
 
-//echo "debut index.php\n";
+error_log( "debut index.php");
 
 
 //Make sure that it is a POST request.
 if(strcasecmp($_SERVER['REQUEST_METHOD'], 'POST') != 0){
+    /*
     if (strcasecmp($_SERVER['REQUEST_METHOD'], 'GET') == 0){
         //echo "index.php : detection octet-stream\n";
         if (isset($_GET['REQUETE'])) {
@@ -54,24 +55,78 @@ if(strcasecmp($_SERVER['REQUEST_METHOD'], 'POST') != 0){
             exit;
         }
         exit;
-    }else{
+    }else{*/
         throw new Exception('Request method must be POST!');
         //echo "Request method must be POST!\n";
-    }
+    //}
 }
 
 $vide=" ";
-/*
-//echo "etape 1 index.php\n";
+
+error_log("etape 1 index.php");
 
 //Make sure that the content type of the POST request has been set to application/json
 $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
-if(strcasecmp($contentType, 'application/json') != 0){
-    throw new Exception('Content type must be: application/json');
-    //echo "Content type must be: application/json\n";
+$contentTypeJsonAttendu = "application/json; charset=utf-8";
+$contentTypeImageAttendu = "application/x-www-form-urlencoded; charset=UTF-8";
+
+
+error_log("content-type = " . $contentType);
+
+if(strcasecmp($contentType, $contentTypeJsonAttendu) != 0){
+    //check if the content type of the POST request is set to image/jpeg
+    if(strcasecmp($contentType, $contentTypeImageAttendu) != 0){
+        throw new Exception('if not POST ; Content type must be: ' . $contentTypeImageAttendu);
+        error_log("if not POST ; Content type must be: " . $contentTypeImageAttendu);
+    }else{
+        // c'est une image on la stocke
+        //$content = trim(file_get_contents("php://input"));
+        error_log("c'est une image qui a ete envoyer, il faut la traiter");
+        // TODO enregistrer sur disque
+        if (isset($_POST['REQUETE'])){
+            $Requete = $_POST{"REQUETE"};
+            $_SESSION['REQUETE'] = $Requete;
+            error_log("index.php : Requete = " . $Requete);
+        }
+        if (isset($_POST['PSEUDO'])){
+            $Pseudo = $_POST{"PSEUDO"};
+            $_SESSION['PSEUDO'] = $Pseudo;
+            error_log("index.php : Pseudo = " . $Pseudo);
+        }
+        if (isset($_POST['FILENAME'])){
+            $Filename = $_POST['FILENAME'];
+            $_SESSION['FILENAME'] = $Filename; 
+            error_log("index.php : Filename = " . $Filename);
+        }else{
+            error_log("index.php : Filename non positionne ");
+            exit;
+        }
+        if (isset($_POST['IMAGE'])) {
+            if ($_POST['IMAGE'] != "") {
+                $imageData = $_POST['IMAGE'];
+                //$_SESSION['IMAGE'] = $Image;
+                //echo ("Image=" . $Image);
+                //$imageData = file_get_contents("php://input");
+                //$imageData=$Image;
+                $ficHandle = fopen("downloads/" . $Filename,"w");
+                fwrite($ficHandle,base64_decode($imageData));
+                error_log("index.php ; image sauvegardée ; taille = " . strlen($imageData));
+                if (strlen($imageData) > 0){
+                    include_once 'controleurs/storePhoto2.php';
+                }
+                exit;
+            } 
+        } else {
+            $Image = $vide;
+            unset($_SESSION['IMAGE']);
+        }
+        exit;
+    }
+    //throw new Exception('Content type must be: application/json');
+    error_log("Content type must be: " . $contentTypeJsonAttendu);    
 }
  
-//echo "etape 2 index.php\n";
+error_log("etape 2 index.php");
 
 //Receive the RAW post data.
 $content = trim(file_get_contents("php://input"));
@@ -123,19 +178,19 @@ if (array_key_exists("FILENAME",$decoded)){
 }
 
 
-echo "requete  = ". $Requete . "\n";
-echo "pseudo   = ". $Pseudo . "\n";
-echo "email    = ". $Email . "\n";
-echo "passwd   = ". $Passwd . "\n";
-echo "filename = ". $Filename . "\n";
-*/
+error_log("requete  = ". $Requete . "\n");
+error_log("pseudo   = ". $Pseudo . "\n");
+error_log("email    = ". $Email . "\n");
+error_log("passwd   = ". $Passwd . "\n");
+error_log("filename = ". $Filename . "\n");
+
 //echo "====================\n";
 //echo "serveur Dictacloud\n";
 //echo "--------------------\n";
 //echo "Analyse parametres :\n";
 
 include_once ('modeles/Users/ClassUsers.php');
-
+/*
 if (isset($_POST['REQUETE'])) {
      if ($_POST['REQUETE'] != "") {
          $Requete = $_POST['REQUETE'];
@@ -207,12 +262,13 @@ if (isset($_POST['IMAGE'])) {
         exit;
     } 
 } else {
-    $Passwd = $vide;
+    $Image = $vide;
     unset($_SESSION['IMAGE']);
 }
 
+*/
+error_log("[" . $Requete . ":" . $Pseudo . ":" . $Email . ":" . $Passwd . "]\n");
 
-//echo ("[" . $Requete . ":" . $Pseudo . ":" . $Email . ":" . $Passwd . "]\n");
 //echo "\n--------------------\n";
 
 // contruction de la reponse
