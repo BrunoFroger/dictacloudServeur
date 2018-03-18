@@ -11,7 +11,7 @@ set_include_path(get_include_path() . PATH_SEPARATOR . $myIncludePath);
 
 include_once ('modeles/Users/ClassUsers.php');
 
-error_log("storePhoto2 : debut");
+//error_log("storePhoto2 : debut");
 
 
 $content = trim(file_get_contents("php://input"));
@@ -20,24 +20,22 @@ $content = trim(file_get_contents("php://input"));
 header( 'content-type: text/html; charset=utf-8' );
 if (isset($_SESSION['REQUETE'])) {
      $Requete = $_SESSION['REQUETE'];
-     error_log("storePhoto2.php : recupere REQUETE " . $Requete);
+     //error_log("storePhoto2.php : recupere REQUETE " . $Requete);
 } else {
 	$Requete = " ";
 }
 if (isset($_SESSION['PSEUDO'])) {
      $Pseudo = $_SESSION['PSEUDO'];
-     error_log("storePhoto2.php : recupere PSEUDO " . $Pseudo);
+     //error_log("storePhoto2.php : recupere PSEUDO " . $Pseudo);
 } else {
 	$Pseudo = " ";
 }
 if (isset($_SESSION['FILENAME'])) {
      $Filename = $_SESSION['FILENAME'];
-     error_log("storePhoto2.php : recupere FILENAME " . $Filename);
+     //error_log("storePhoto2.php : recupere FILENAME " . $Filename);
 } else {
 	$Filename = " ";
 }
-
-
 
 // TODO envoyer par mail si flag envoi positionné
 // recuperation de l'adresse mail du user
@@ -45,14 +43,32 @@ $user = new User($Pseudo, "", "");
 $user->checkPseudo($Pseudo);
 
 $Email = $user->getEmail();
-error_log("email = " . $Email);
+//error_log("email = " . $Email);
 
+// reponse OK vers application android 
 
+$result="OK";
+
+$message = "photo traitée dans storePhoto2\n";
+
+//error_log("storePhoto2.php : fin OK");
+
+echo $Requete . ":";
+echo $result . ":";
+echo $Pseudo . ":";
+echo $Filename . ":";
+echo $message;
+
+flush();
+//exit ;
+
+//error_log("debut envoi du mail");
 $subject = "[Dictacloud] Votre photo : " . $Filename;
 $message = "Bonjour $Pseudo<br><br>"
-        . "Voici, en pièce jointe, la photo que vous venez de prendre<br>"
-        . "Cordialement<br>"
-        . "Le serveur Dictacloud";
+        . "Voici, en pièce jointe, la photo que vous venez de prendre<br><br>"
+        . "Cordialement<br><br>"
+        . "Le serveur Dictacloud<br><br>"
+        . "PS : Mail envoyé par un robot, ne pas repondre à ce mail";
 file_put_contents("/tmp/mail.txt", "to: $Email\n");
 file_put_contents("/tmp/mail.txt", "from: Dictacloud <froger.popote@wanadoo.fr>\n", FILE_APPEND);
 file_put_contents("/tmp/mail.txt", "subject: $subject\n", FILE_APPEND);
@@ -69,26 +85,16 @@ $cmd = "mutt -H - -n "
         . " -e 'set content_type=\"text/html\"'"
         . " -e 'set copy=no'"
         . " -a downloads/$Filename"
-        . " < /tmp/mail.txt";
+        . " < /tmp/mail.txt ";
 //error_log("commande executee : $cmd");
 $ficMail = shell_exec("more /tmp/mail.txt");
-error_log("fichier mail : " . $ficMail);
-shell_exec($cmd);
+//error_log("fichier mail : " . $ficMail);
 
+exec($cmd . " > /dev/null &");
+//error_log("fin envoi du mail");
 
+$Filename = "downloads/" . $Filename;
+exec("./clearFichier.sh " . $Filename . " > /dev/null &");
 
-// reponse OK vers application android 
-
-$result="OK";
-
-$message = "photo traitée dans storePhoto2\n";
-
-error_log("storePhoto2.php : fin OK");
-
-echo $Requete . ":";
-echo $result . ":";
-echo $Pseudo . ":";
-echo $Filename . ":";
-echo $message;
 exit;
 

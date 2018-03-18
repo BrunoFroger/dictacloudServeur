@@ -10,68 +10,24 @@ session_start();
 $myIncludePath = '/var/www/html/dictacloud';
 set_include_path(get_include_path() . PATH_SEPARATOR . $myIncludePath); 
 
-//header( 'content-type: text/html; charset=utf-8' );
-//header( 'Content-type: application/json; charset=utf-8' );
-
-error_log( "debut index.php");
-
+//error_log( "debut index.php");
 
 //Make sure that it is a POST request.
 if(strcasecmp($_SERVER['REQUEST_METHOD'], 'POST') != 0){
-    /*
-    if (strcasecmp($_SERVER['REQUEST_METHOD'], 'GET') == 0){
-        //echo "index.php : detection octet-stream\n";
-        if (isset($_GET['REQUETE'])) {
-            $Requete = $_GET['REQUETE'];
-            $_SESSION['REQUETE'] = $Requete;
-            //echo "index.php : init REQUETE " . $Requete . "\n";
-        } else {
-            $Requete = " ";
-        } 
-        if (isset($_GET['PSEUDO'])) {
-            $Pseudo = $_GET['PSEUDO'];
-            $_SESSION['PSEUDO'] = $Pseudo;
-            //echo "index.php : init PSEUDO " . $Pseudo . "\n";
-        } else {
-            $Pseudo = " ";
-        }
-        if (isset($_GET['FILENAME'])) {
-            $Filename = $_GET['FILENAME'];
-            $_SESSION['FILENAME'] = $Filename;
-            //echo "index.php : init FILENAME " . $Filename . "\n";
-        } else {
-            $Filename = " ";
-        }
-        if ($Filename != " " && $Pseudo != " "){
-            // recuperation des datas envoyées et stockage dans un fichier
-            //echo "index.php : recuperation des datas depuis la requete\n";
-            $imageData = file_get_contents("php://input");
-            $ficHandle = fopen("downloads/".$Filename,"w");
-            fwrite($ficHandle,$imageData);
-            echo "index.php ; image sauvegardée ; taille = " . strlen($imageData) . "\n";
-            if (strlen($imageData) > 0){
-                include_once 'controleurs/storePhoto2.php';
-            }
-            exit;
-        }
-        exit;
-    }else{*/
-        throw new Exception('Request method must be POST!');
-        //echo "Request method must be POST!\n";
-    //}
+    throw new Exception('Request method must be POST!');
+    error_log("Request method must be POST!");
 }
 
 $vide=" ";
 
-error_log("etape 1 index.php");
+//error_log("etape 1 index.php");
 
 //Make sure that the content type of the POST request has been set to application/json
 $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
 $contentTypeJsonAttendu = "application/json; charset=utf-8";
 $contentTypeImageAttendu = "application/x-www-form-urlencoded; charset=UTF-8";
 
-
-error_log("content-type = " . $contentType);
+//error_log("content-type = " . $contentType);
 
 if(strcasecmp($contentType, $contentTypeJsonAttendu) != 0){
     //check if the content type of the POST request is set to image/jpeg
@@ -81,22 +37,22 @@ if(strcasecmp($contentType, $contentTypeJsonAttendu) != 0){
     }else{
         // c'est une image on la stocke
         //$content = trim(file_get_contents("php://input"));
-        error_log("c'est une image qui a ete envoyer, il faut la traiter");
+        //error_log("c'est une image qui a ete envoyer, il faut la traiter");
         // TODO enregistrer sur disque
         if (isset($_POST['REQUETE'])){
             $Requete = $_POST{"REQUETE"};
             $_SESSION['REQUETE'] = $Requete;
-            error_log("index.php : Requete = " . $Requete);
+            //error_log("index.php : Requete = " . $Requete);
         }
         if (isset($_POST['PSEUDO'])){
             $Pseudo = $_POST{"PSEUDO"};
             $_SESSION['PSEUDO'] = $Pseudo;
-            error_log("index.php : Pseudo = " . $Pseudo);
+            //error_log("index.php : Pseudo = " . $Pseudo);
         }
         if (isset($_POST['FILENAME'])){
             $Filename = $_POST['FILENAME'];
             $_SESSION['FILENAME'] = $Filename; 
-            error_log("index.php : Filename = " . $Filename);
+            //error_log("index.php : Filename = " . $Filename);
         }else{
             error_log("index.php : Filename non positionne ");
             exit;
@@ -104,13 +60,9 @@ if(strcasecmp($contentType, $contentTypeJsonAttendu) != 0){
         if (isset($_POST['IMAGE'])) {
             if ($_POST['IMAGE'] != "") {
                 $imageData = $_POST['IMAGE'];
-                //$_SESSION['IMAGE'] = $Image;
-                //echo ("Image=" . $Image);
-                //$imageData = file_get_contents("php://input");
-                //$imageData=$Image;
                 $ficHandle = fopen("downloads/" . $Filename,"w");
                 fwrite($ficHandle,base64_decode($imageData));
-                error_log("index.php ; image sauvegardée ; taille = " . strlen($imageData));
+                //error_log("index.php ; image sauvegardee ; taille = " . strlen($imageData));
                 if (strlen($imageData) > 0){
                     include_once 'controleurs/storePhoto2.php';
                 }
@@ -126,11 +78,10 @@ if(strcasecmp($contentType, $contentTypeJsonAttendu) != 0){
     error_log("Content type must be: " . $contentTypeJsonAttendu);    
 }
  
-error_log("etape 2 index.php");
+//error_log("etape 2 index.php");
 
 //Receive the RAW post data.
 $content = trim(file_get_contents("php://input"));
-//echo $content;
  
 //Attempt to decode the incoming RAW post data from JSON.
 $decoded = json_decode($content, true);
@@ -141,9 +92,6 @@ if(!is_array($decoded)){
     //echo "Received content contained invalid JSON!\n";
 }
 
-
-//echo "JSON OK\n";
-//echo print_r($decoded);
 $decoded = json_decode($content);
 
 if (array_key_exists("REQUETE",$decoded)){
@@ -178,11 +126,11 @@ if (array_key_exists("FILENAME",$decoded)){
 }
 
 
-error_log("requete  = ". $Requete . "\n");
-error_log("pseudo   = ". $Pseudo . "\n");
-error_log("email    = ". $Email . "\n");
-error_log("passwd   = ". $Passwd . "\n");
-error_log("filename = ". $Filename . "\n");
+//error_log("requete  = ". $Requete . "\n");
+//error_log("pseudo   = ". $Pseudo . "\n");
+//error_log("email    = ". $Email . "\n");
+//error_log("passwd   = ". $Passwd . "\n");
+//error_log("filename = ". $Filename . "\n");
 
 //echo "====================\n";
 //echo "serveur Dictacloud\n";
@@ -190,84 +138,8 @@ error_log("filename = ". $Filename . "\n");
 //echo "Analyse parametres :\n";
 
 include_once ('modeles/Users/ClassUsers.php');
-/*
-if (isset($_POST['REQUETE'])) {
-     if ($_POST['REQUETE'] != "") {
-         $Requete = $_POST['REQUETE'];
-         $_SESSION['REQUETE'] = $Requete;
-         //echo ("Requete=" . $Requete . "; ");
-     }
-} else {
-     $Requete = $vide;
-     unset($_SESSION['REQUETE']);
-}
 
-if (isset($_POST['PSEUDO'])) {
-     if ($_POST['PSEUDO'] != "") {
-         $Pseudo = $_POST['PSEUDO'];
-         $_SESSION['PSEUDO'] = $Pseudo;
-         //echo ("Pseudo=" . $Pseudo . "; ");
-     } 
-} else {
-     $Pseudo = $vide;
-     unset($_SESSION['PSEUDO']);
-}
-
-if (isset($_POST['EMAIL'])) {
-    if ($_POST['EMAIL'] != "") {
-        $Email = $_POST['EMAIL'];
-        $_SESSION['EMAIL'] = $Email;
-        //echo ("Email=" . $Email . "; ");
-    } 
-} else {
-    $Email = $vide;
-    unset($_SESSION['EMAIL']);
-}    
-
-if (isset($_POST['PASSWD'])) {
-    if ($_POST['PASSWD'] != "") {
-        $Passwd = $_POST['PASSWD'];
-        $_SESSION['PASSWD'] = $Passwd;
-        //echo ("Passwd=" . $Passwd);
-    } 
-} else {
-    $Passwd = $vide;
-    unset($_SESSION['PASSWD']);
-}
-
-if (isset($_POST['FILENAME'])) {
-    if ($_POST['FILENAME'] != "") {
-        $Filename = $_POST['FILENAME'];
-        $_SESSION['FILENAME'] = $Filename;
-        //echo ("Filename=" . $Filename);
-    } 
-} else {
-    $Filename = $vide;
-    unset($_SESSION['FILENAME']);
-}
-
-if (isset($_POST['IMAGE'])) {
-    if ($_POST['IMAGE'] != "") {
-        $Image = $_POST['IMAGE'];
-        $_SESSION['IMAGE'] = $Image;
-        //echo ("Image=" . $Image);
-        //$imageData = file_get_contents("php://input");
-        $imageData=$Image;
-        $ficHandle = fopen("downloads/".$Filename,"w");
-        fwrite($ficHandle,$imageData);
-        echo "index.php ; image sauvegardée ; taille = " . strlen($imageData) . "\n";
-        if (strlen($imageData) > 0){
-            include_once 'controleurs/storePhoto2.php';
-        }
-        exit;
-    } 
-} else {
-    $Image = $vide;
-    unset($_SESSION['IMAGE']);
-}
-
-*/
-error_log("[" . $Requete . ":" . $Pseudo . ":" . $Email . ":" . $Passwd . "]\n");
+//error_log("[" . $Requete . ":" . $Pseudo . ":" . $Email . ":" . $Passwd . "]\n");
 
 //echo "\n--------------------\n";
 
