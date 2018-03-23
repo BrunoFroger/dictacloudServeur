@@ -207,8 +207,8 @@ if ($Requete != ""){
                 $result="Erreur => unsubscribe => le passwd " . $Passwd . " n'est pas vadlide";
             } else {
                 $result="OK";
+                $user->delete();
             }
-            $user->delete();
             $user->result($Requete,$result);
             break; 
         //*********************    
