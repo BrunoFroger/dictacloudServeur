@@ -203,7 +203,7 @@ if ($Requete != ""){
                 $result="Erreur => unsubscribe => manque parametre";
             }else if (!$user->checkPseudo($Pseudo)){
                 $result="Erreur => unsubscribe => le pseudo " . $Pseudo . " n'existe pas";
-            } else if (!$user->checkPasswd($Passwd)){
+            } else if (!$user->checkPasswd($Pseudo,$Passwd)){
                 $result="Erreur => unsubscribe => le passwd " . $Passwd . " n'est pas vadlide";
             } else {
                 $result="OK";
