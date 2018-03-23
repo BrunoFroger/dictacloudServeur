@@ -184,6 +184,8 @@ if ($Requete != ""){
                     $result="Erreur => subscribe => l'email " . $Email . " existe deja";
                 } else if ($user->checkPseudo($Pseudo)){
                     $result="Erreur => subscribe => le pseudo " . $Pseudo . " existe deja";
+                }  else if ($Pseudo == ""){
+                    $result="Erreur => subscribe => le passwd  n'est pas valide";
                 } else {
                     //echo ("subsribe new user\n");
                     //$user->display();
@@ -201,6 +203,8 @@ if ($Requete != ""){
                 $result="Erreur => unsubscribe => manque parametre";
             }else if (!$user->checkPseudo($Pseudo)){
                 $result="Erreur => unsubscribe => le pseudo " . $Pseudo . " n'existe pas";
+            } else if (!$user->checkPasswd($Passwd)){
+                $result="Erreur => unsubscribe => le passwd " . $Passwd . " n'est pas vadlide";
             } else {
                 $result="OK";
             }
