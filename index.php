@@ -159,13 +159,13 @@ if ($Requete != ""){
             if ($Pseudo == ""  || $Passwd == ""){
                 $result="Erreur => register => manque parametre"; 
             }else{
-                //echo ("register => " . $Pseudo . "\n");
+                //error_log("register => " . $Pseudo . "\n");
                 if ( ! $user->checkPseudo($Pseudo)){
                     $result="Erreur => register => pseudo inconnu";
                 } else if ( ! $user->checkPasswd($Pseudo,$Passwd)){
                     $result="Erreur => register => mot de passe invalide";
                 } else {
-                    //echo ("submit register\n");
+                    //error_log("submit register");
                     $result="OK";
                 }            
             }
@@ -178,16 +178,15 @@ if ($Requete != ""){
             if ($Pseudo == ""){
                 $result="Erreur => register => manque parametre"; 
             }else{
-                //echo ("unregister => " . $Pseudo . "\n");
+                //error_log("unregister => " . $Pseudo . "\n");
                 if ( ! $user->checkPseudo($Pseudo)){
-                    $result="Erreur => register => pseudo inconnu";
-                } else if ( ! $user->checkPasswd($Pseudo,$Passwd)){
-                    $result="Erreur => register => mot de passe invalide";
+                    $result="Erreur => unregister => pseudo inconnu";
                 } else {
-                    //echo ("submit register\n");
+                    //error_log("exec unregister\n");
                     $result="OK";
                 }            
             }
+            $user->result($Requete,$result);
             break; 
         //*********************    
         //**    subscribe
@@ -196,7 +195,7 @@ if ($Requete != ""){
             if ($Pseudo == "" || $Email == "" || $Passwd == ""){
                 $result="Erreur => subscribe => manque parametre";
             }else{
-                //echo ("subscribe => " . $Pseudo . "\n");
+                //error_log("subscribe => " . $Pseudo . "\n");
                 //$user->display();
                 if ($user->checkEmail($Email)){
                     $result="Erreur => subscribe => l'email " . $Email . " existe deja";
@@ -205,7 +204,7 @@ if ($Requete != ""){
                 }  else if ($Pseudo == ""){
                     $result="Erreur => subscribe => le passwd  n'est pas valide";
                 } else {
-                    //echo ("subsribe new user\n");
+                    //error_log("subsribe new user\n");
                     //$user->display();
                     $user->create();
                     $result="OK";

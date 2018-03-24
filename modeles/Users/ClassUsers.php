@@ -33,6 +33,7 @@ class User {
     }
 
     public function result($requete, $result){
+        //error_log("User->result : ");
         echo "{";
         echo '"REQUETE":"' . $requete . "\"";
         echo ',"RESULT":"' . $result . "\"";
