@@ -172,6 +172,24 @@ if ($Requete != ""){
             $user->result($Requete,$result);
             break; 
         //*********************    
+        //**    unregister
+        //*********************    
+        case "unregister":
+            if ($Pseudo == ""){
+                $result="Erreur => register => manque parametre"; 
+            }else{
+                //echo ("unregister => " . $Pseudo . "\n");
+                if ( ! $user->checkPseudo($Pseudo)){
+                    $result="Erreur => register => pseudo inconnu";
+                } else if ( ! $user->checkPasswd($Pseudo,$Passwd)){
+                    $result="Erreur => register => mot de passe invalide";
+                } else {
+                    //echo ("submit register\n");
+                    $result="OK";
+                }            
+            }
+            break; 
+        //*********************    
         //**    subscribe
         //*********************    
         case 'subsribe':
