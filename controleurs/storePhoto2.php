@@ -24,6 +24,14 @@ if (isset($_SESSION['REQUETE'])) {
 } else {
 	$Requete = " ";
 }
+
+if (isset($_SESSION['TREATMENT'])) {
+        $treatment = $_SESSION['TREATMENT'];
+        //error_log("storePhoto2.php : recupere TREATMENT " . $treatment);
+   } else {
+           $treatment = " ";
+   }
+   
 if (isset($_SESSION['PSEUDO'])) {
      $Pseudo = $_SESSION['PSEUDO'];
      //error_log("storePhoto2.php : recupere PSEUDO " . $Pseudo);
@@ -62,39 +70,41 @@ echo $message;
 flush();
 //exit ;
 
-//error_log("debut envoi du mail");
-$subject = "[Dictacloud] Votre photo : " . $Filename;
-$message = "Bonjour $Pseudo<br><br>"
-        . "Voici, en pièce jointe, la photo que vous venez de prendre<br><br>"
-        . "Cordialement<br><br>"
-        . "Le serveur Dictacloud<br><br>"
-        . "PS : Mail envoyé par un robot, ne pas repondre à ce mail";
-file_put_contents("/tmp/mail.txt", "to: $Email\n");
-file_put_contents("/tmp/mail.txt", "from: Dictacloud <froger.popote@wanadoo.fr>\n", FILE_APPEND);
-file_put_contents("/tmp/mail.txt", "subject: $subject\n", FILE_APPEND);
-file_put_contents("/tmp/mail.txt", "$message\n", FILE_APPEND);
+if ($treatment == "treatmentMail"){
+        error_log("envoi par mail");
+        $subject = "[Dictacloud] Votre photo : " . $Filename;
+        $message = "Bonjour $Pseudo<br><br>"
+                . "Voici, en pièce jointe, la photo que vous venez de prendre<br><br>"
+                . "Cordialement<br><br>"
+                . "Le serveur Dictacloud<br><br>"
+                . "PS : Mail envoyé par un robot, ne pas repondre à ce mail";
+        file_put_contents("/tmp/mail.txt", "to: $Email\n");
+        file_put_contents("/tmp/mail.txt", "from: Dictacloud <froger.popote@wanadoo.fr>\n", FILE_APPEND);
+        file_put_contents("/tmp/mail.txt", "subject: $subject\n", FILE_APPEND);
+        file_put_contents("/tmp/mail.txt", "$message\n", FILE_APPEND);
 
-//. " -e 'set smtp_url=\"smtp.orange.fr::465\"'"
-//. " -e 'set smtp_url=\"199.59.243.120::465\"'"
-        //. " -e 'set ssl_starttls=yes'"
         //. " -e 'set smtp_url=\"smtp.orange.fr::465\"'"
-        //. " -e 'set smtp_user=\"bruno.froger2\"'"
-        //. " -e 'set smtp_pass=\"3paul2fan\"'"
-        //. " -e 'set hostname=\"wanadoo.fr\"'"
-$cmd = "mutt -H - -n "
-        . " -e 'set content_type=\"text/html\"'"
-        . " -e 'set copy=no'"
-        . " -a downloads/$Filename"
-        . " < /tmp/mail.txt ";
-//error_log("commande executee : $cmd");
-$ficMail = shell_exec("more /tmp/mail.txt");
-//error_log("fichier mail : " . $ficMail);
+        //. " -e 'set smtp_url=\"199.59.243.120::465\"'"
+                //. " -e 'set ssl_starttls=yes'"
+                //. " -e 'set smtp_url=\"smtp.orange.fr::465\"'"
+                //. " -e 'set smtp_user=\"bruno.froger2\"'"
+                //. " -e 'set smtp_pass=\"3paul2fan\"'"
+                //. " -e 'set hostname=\"wanadoo.fr\"'"
+        $cmd = "mutt -H - -n "
+                . " -e 'set content_type=\"text/html\"'"
+                . " -e 'set copy=no'"
+                . " -a downloads/$Filename"
+                . " < /tmp/mail.txt ";
+        //error_log("commande executee : $cmd");
+        $ficMail = shell_exec("more /tmp/mail.txt");
+        //error_log("fichier mail : " . $ficMail);
 
-exec($cmd . " > /dev/null &");
-//error_log("fin envoi du mail");
+        exec($cmd . " > /dev/null &");
+        //error_log("fin envoi du mail");
 
-$Filename = "downloads/" . $Filename;
-exec("./clearFichier.sh " . $Filename . " > /dev/null &");
+        $Filename = "downloads/" . $Filename;
+        exec("./clearFichier.sh " . $Filename . " > /dev/null &");
+}
 
 exit;
 

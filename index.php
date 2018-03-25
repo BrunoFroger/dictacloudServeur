@@ -44,6 +44,16 @@ if(strcasecmp($contentType, $contentTypeJsonAttendu) != 0){
             $_SESSION['REQUETE'] = $Requete;
             //error_log("index.php : Requete = " . $Requete);
         }
+
+        if (isset($_POST["TREATMENT"])){
+            $Treatment = $_POST["TREATMENT"];
+            $_SESSION['TREATMENT'] = $Treatment;
+
+        }else{
+            $Treatment = $vide;
+        }
+        error_log("traitement => " . $Treatment);
+
         if (isset($_POST['PSEUDO'])){
             $Pseudo = $_POST{"PSEUDO"};
             $_SESSION['PSEUDO'] = $Pseudo;
@@ -60,7 +70,7 @@ if(strcasecmp($contentType, $contentTypeJsonAttendu) != 0){
         if (isset($_POST['IMAGE'])) {
             if ($_POST['IMAGE'] != "") {
                 $imageData = $_POST['IMAGE'];
-                $ficHandle = fopen("downloads/" . $Filename,"w");
+                $ficHandle = fopen("downloads/". $Filename,"w");
                 fwrite($ficHandle,base64_decode($imageData));
                 //error_log("index.php ; image sauvegardee ; taille = " . strlen($imageData));
                 if (strlen($imageData) > 0){
@@ -100,6 +110,16 @@ if (array_key_exists("REQUETE",$decoded)){
 }else{
     $Requete = $vide;
 }
+
+if (array_key_exists("TREATMENT",$decoded)){
+    $Treatment = $decoded->{"TREATMENT"};
+    $_SESSION['TREATMENT'] = $Treatment;
+
+}else{
+    $Treatment = $vide;
+}
+error_log("traitement => " . $Treatment);
+
 if (array_key_exists("PSEUDO",$decoded)){
     $Pseudo = $decoded->{"PSEUDO"};
     $_SESSION['PSEUDO'] = $Pseudo;
@@ -159,13 +179,30 @@ if ($Requete != ""){
             if ($Pseudo == ""  || $Passwd == ""){
                 $result="Erreur => register => manque parametre"; 
             }else{
-                //echo ("register => " . $Pseudo . "\n");
+                //error_log("register => " . $Pseudo . "\n");
                 if ( ! $user->checkPseudo($Pseudo)){
                     $result="Erreur => register => pseudo inconnu";
                 } else if ( ! $user->checkPasswd($Pseudo,$Passwd)){
                     $result="Erreur => register => mot de passe invalide";
                 } else {
-                    //echo ("submit register\n");
+                    //error_log("submit register");
+                    $result="OK";
+                }            
+            }
+            $user->result($Requete,$result);
+            break; 
+        //*********************    
+        //**    unregister
+        //*********************    
+        case "unregister":
+            if ($Pseudo == ""){
+                $result="Erreur => register => manque parametre"; 
+            }else{
+                //error_log("unregister => " . $Pseudo . "\n");
+                if ( ! $user->checkPseudo($Pseudo)){
+                    $result="Erreur => unregister => pseudo inconnu";
+                } else {
+                    //error_log("exec unregister\n");
                     $result="OK";
                 }            
             }
@@ -178,7 +215,7 @@ if ($Requete != ""){
             if ($Pseudo == "" || $Email == "" || $Passwd == ""){
                 $result="Erreur => subscribe => manque parametre";
             }else{
-                //echo ("subscribe => " . $Pseudo . "\n");
+                //error_log("subscribe => " . $Pseudo . "\n");
                 //$user->display();
                 if ($user->checkEmail($Email)){
                     $result="Erreur => subscribe => l'email " . $Email . " existe deja";
@@ -187,7 +224,7 @@ if ($Requete != ""){
                 }  else if ($Pseudo == ""){
                     $result="Erreur => subscribe => le passwd  n'est pas valide";
                 } else {
-                    //echo ("subsribe new user\n");
+                    //error_log("subsribe new user\n");
                     //$user->display();
                     $user->create();
                     $result="OK";
