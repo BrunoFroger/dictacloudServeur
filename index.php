@@ -186,26 +186,6 @@ if ($Requete != ""){
                     $result="Erreur => register => mot de passe invalide";
                 } else {
                     //error_log("submit register");
-<<<<<<< HEAD
-=======
-                    $result="OK";
-                }            
-            }
-            $user->result($Requete,$result);
-            break; 
-        //*********************    
-        //**    unregister
-        //*********************    
-        case "unregister":
-            if ($Pseudo == ""){
-                $result="Erreur => register => manque parametre"; 
-            }else{
-                //error_log("unregister => " . $Pseudo . "\n");
-                if ( ! $user->checkPseudo($Pseudo)){
-                    $result="Erreur => unregister => pseudo inconnu";
-                } else {
-                    //error_log("exec unregister\n");
->>>>>>> 65d4b1cb3de0307e73848bf1175881b795ba0497
                     $result="OK";
                 }            
             }
