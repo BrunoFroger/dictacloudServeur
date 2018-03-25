@@ -44,6 +44,16 @@ if(strcasecmp($contentType, $contentTypeJsonAttendu) != 0){
             $_SESSION['REQUETE'] = $Requete;
             //error_log("index.php : Requete = " . $Requete);
         }
+
+        if (isset($_POST["TREATMENT"])){
+            $Treatment = $_POST["TREATMENT"];
+            $_SESSION['TREATMENT'] = $Treatment;
+
+        }else{
+            $Treatment = $vide;
+        }
+        error_log("traitement => " . $Treatment);
+
         if (isset($_POST['PSEUDO'])){
             $Pseudo = $_POST{"PSEUDO"};
             $_SESSION['PSEUDO'] = $Pseudo;
@@ -60,7 +70,7 @@ if(strcasecmp($contentType, $contentTypeJsonAttendu) != 0){
         if (isset($_POST['IMAGE'])) {
             if ($_POST['IMAGE'] != "") {
                 $imageData = $_POST['IMAGE'];
-                $ficHandle = fopen("downloads/" . $Filename,"w");
+                $ficHandle = fopen("downloads/". $Filename,"w");
                 fwrite($ficHandle,base64_decode($imageData));
                 //error_log("index.php ; image sauvegardee ; taille = " . strlen($imageData));
                 if (strlen($imageData) > 0){
@@ -100,6 +110,16 @@ if (array_key_exists("REQUETE",$decoded)){
 }else{
     $Requete = $vide;
 }
+
+if (array_key_exists("TREATMENT",$decoded)){
+    $Treatment = $decoded->{"TREATMENT"};
+    $_SESSION['TREATMENT'] = $Treatment;
+
+}else{
+    $Treatment = $vide;
+}
+error_log("traitement => " . $Treatment);
+
 if (array_key_exists("PSEUDO",$decoded)){
     $Pseudo = $decoded->{"PSEUDO"};
     $_SESSION['PSEUDO'] = $Pseudo;

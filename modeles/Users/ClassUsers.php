@@ -69,9 +69,9 @@ class User {
     }
 
     public function checkPseudo($pseudo){
-        //echo ("check Pseudo (" . $pseudo . ")\n");
+        //error_log("check Pseudo (" . $pseudo . ")\n");
         $requete = "select * from users where (Pseudo='" . $pseudo . "') ";
-        //echo ("check Pseudo requete = (" . $requete . ")\n");
+        //error_log("check Pseudo requete = (" . $requete . ")\n");
         if ($this->getRequete($requete)){
             //$this->display();
             if ($this->Pseudo == $pseudo){
@@ -82,9 +82,9 @@ class User {
     }
 
     public function checkPasswd($pseudo, $passwd){
-        //echo ("check Passwd (" . $passwd . ")\n");
+        //error_log("check Passwd (" . $passwd . ")\n");
         $requete = "select * from users where (Pseudo='" . $pseudo . "') ";
-        //echo ("check Passwd requete = (" . $requete . ")\n");
+        //error_log("check Passwd requete = (" . $requete . ")\n");
         if ($this->getRequete($requete)){
             //$this->display();
             if ($this->Passwd == $passwd){
@@ -95,9 +95,9 @@ class User {
     }
 
     public function checkEmail($email){
-        //echo ("check email (" . $email . ")\n");
+        //error_log("check email (" . $email . ")\n");
         $requete = "select * from users where (Email='" . $email . "') ";
-        //echo ("check email requete = (" . $requete . ")\n");
+        //error_log("check email requete = (" . $requete . ")\n");
         if ($this->getRequete($requete)){
             //$this->display();
             if ($this->Email == $email){
@@ -108,14 +108,14 @@ class User {
     }
 
     private function getRequete($requete) {
-        //echo ("<p>requete = $requete </p>");
+        //error_log("<p>requete = $requete </p>");
         try {
             $dbh = new PDO(SERVEUR, USER, PWD);
             $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
             $mesItems = $dbh->query($requete);
             $dbh = null;
-            //echo ("requete executee = " . $requete . "</p>\n");
+            //error_log("requete executee = " . $requete . "</p>\n");
             $mesItems->setFetchMode(PDO::FETCH_ASSOC);
             if ($mesItems->rowCount() > 0) {
                 foreach ($mesItems as $monItem) {
