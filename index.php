@@ -39,26 +39,31 @@ if(strcasecmp($contentType, $contentTypeJsonAttendu) != 0){
         //$content = trim(file_get_contents("php://input"));
         //error_log("c'est une image qui a ete envoyer, il faut la traiter");
         // TODO enregistrer sur disque
+        if (isset($_POST['PSEUDO'])){
+            $Pseudo = $_POST{"PSEUDO"};
+            $_SESSION['PSEUDO'] = $Pseudo;
+            //error_log("index.php : Pseudo = " . $Pseudo);
+        }
+
         if (isset($_POST['REQUETE'])){
             $Requete = $_POST{"REQUETE"};
             $_SESSION['REQUETE'] = $Requete;
             //error_log("index.php : Requete = " . $Requete);
         }
 
+        if ($Requete == "liste"){
+            include_once 'controleurs/liste.php';
+            exit;
+        }
+
         if (isset($_POST["TREATMENT"])){
             $Treatment = $_POST["TREATMENT"];
             $_SESSION['TREATMENT'] = $Treatment;
-
+            error_log("traitement => " . $Treatment);
         }else{
             $Treatment = $vide;
         }
-        error_log("traitement => " . $Treatment);
 
-        if (isset($_POST['PSEUDO'])){
-            $Pseudo = $_POST{"PSEUDO"};
-            $_SESSION['PSEUDO'] = $Pseudo;
-            //error_log("index.php : Pseudo = " . $Pseudo);
-        }
         if (isset($_POST['FILENAME'])){
             $Filename = $_POST['FILENAME'];
             $_SESSION['FILENAME'] = $Filename; 
@@ -118,7 +123,7 @@ if (array_key_exists("TREATMENT",$decoded)){
 }else{
     $Treatment = $vide;
 }
-error_log("traitement => " . $Treatment);
+//error_log("traitement => " . $Treatment);
 
 if (array_key_exists("PSEUDO",$decoded)){
     $Pseudo = $decoded->{"PSEUDO"};
@@ -146,8 +151,8 @@ if (array_key_exists("FILENAME",$decoded)){
 }
 
 
-//error_log("requete  = ". $Requete . "\n");
-//error_log("pseudo   = ". $Pseudo . "\n");
+error_log("requete  = ". $Requete . "\n");
+error_log("pseudo   = ". $Pseudo . "\n");
 //error_log("email    = ". $Email . "\n");
 //error_log("passwd   = ". $Passwd . "\n");
 //error_log("filename = ". $Filename . "\n");
@@ -253,6 +258,13 @@ if ($Requete != ""){
         //*********************    
         case 'sendPhoto':
             include_once 'controleurs/storePhoto2.php';
+            break;
+        //*********************    
+        //**    liste
+        //*********************    
+        case 'liste':
+            error_log("liste des fichiers");
+            include_once 'controleurs/liste.php';
             break;
         //*********************    
         //**    default
