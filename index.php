@@ -90,22 +90,22 @@ if(strcasecmp($contentType, $contentTypeJsonAttendu) != 0){
                 //**    liste
                 //*********************    
                 case 'liste':
-                    error_log("liste des fichiers");
+                    error_log("index.php : liste des fichiers");
                     include_once 'controleurs/liste.php';
                     break;
                 //*********************    
                 //**    SendFileByEmail
                 //*********************    
                 case 'SendFileByEmail':
-                    error_log("SendFileByEmail");
+                    error_log("index.php : SendFileByEmail");
                     //include_once 'controleurs/sendFileByEmail.php';
                     break;
                 //*********************    
                 //**    RemoveFileOnServer
                 //*********************    
                 case 'RemoveFileOnServer':
-                    error_log("RemoveFileOnServer");
-                    //include_once 'controleurs/RemoveFileOnServer.php';
+                    error_log("index.php : RemoveFileOnServer");
+                    include_once 'controleurs/RemoveFileOnServer.php';
                     break;
                 }
             }
