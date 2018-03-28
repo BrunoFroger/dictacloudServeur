@@ -67,6 +67,7 @@ if(strcasecmp($contentType, $contentTypeJsonAttendu) != 0){
         }else{
             $Filename = $vide;
         }
+        
         if (isset($_POST['IMAGE'])) {
             if ($_POST['IMAGE'] != "" && $Filename != $vide) {
                 $imageData = $_POST['IMAGE'];
