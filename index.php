@@ -49,8 +49,9 @@ if(strcasecmp($contentType, $contentTypeJsonAttendu) != 0){
             $Requete = $_POST{"REQUETE"};
             $_SESSION['REQUETE'] = $Requete;
             //error_log("index.php : Requete = " . $Requete);
+        }else{
+            $Requete = $vide;
         }
-
         if (isset($_POST["TREATMENT"])){
             $Treatment = $_POST["TREATMENT"];
             $_SESSION['TREATMENT'] = $Treatment;
@@ -62,7 +63,7 @@ if(strcasecmp($contentType, $contentTypeJsonAttendu) != 0){
         if (isset($_POST['FILENAME'])){
             $Filename = $_POST['FILENAME'];
             $_SESSION['FILENAME'] = $Filename; 
-            //error_log("index.php : Filename = " . $Filename);
+            error_log("index.php : Filename = " . $Filename);
         }else{
             error_log("index.php : Filename non positionne ");
             exit;
@@ -83,13 +84,13 @@ if(strcasecmp($contentType, $contentTypeJsonAttendu) != 0){
             unset($_SESSION['IMAGE']);
         }
 
-        if ($Requete == "liste"){
+        if ($Requete != $vide){
             switch ($Requete){
                 //*********************    
                 //**    liste
                 //*********************    
                 case 'liste':
-                    //error_log("liste des fichiers");
+                    error_log("liste des fichiers");
                     include_once 'controleurs/liste.php';
                     break;
                 //*********************    
