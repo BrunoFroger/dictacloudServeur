@@ -48,7 +48,7 @@ $message = "fichier effacé\n";
 $tmp = exec("rm -f" . $Filename);
 //$tmp = "message de retour de rm";
 error_log("RemoveFileOnServer.php : resultat commande rm ($tmp)");
-$message = $tmp;
+$message = "Fichier effacé sur le serveur";
 
 echo $Requete . ":";
 echo $result . ":";
