@@ -51,11 +51,6 @@ if(strcasecmp($contentType, $contentTypeJsonAttendu) != 0){
             //error_log("index.php : Requete = " . $Requete);
         }
 
-        if ($Requete == "liste"){
-            include_once 'controleurs/liste.php';
-            exit;
-        }
-
         if (isset($_POST["TREATMENT"])){
             $Treatment = $_POST["TREATMENT"];
             $_SESSION['TREATMENT'] = $Treatment;
@@ -87,6 +82,32 @@ if(strcasecmp($contentType, $contentTypeJsonAttendu) != 0){
             $Image = $vide;
             unset($_SESSION['IMAGE']);
         }
+
+        if ($Requete == "liste"){
+            switch ($Requete){
+                //*********************    
+                //**    liste
+                //*********************    
+                case 'liste':
+                    //error_log("liste des fichiers");
+                    include_once 'controleurs/liste.php';
+                    break;
+                //*********************    
+                //**    SendFileByEmail
+                //*********************    
+                case 'SendFileByEmail':
+                    error_log("SendFileByEmail");
+                    //include_once 'controleurs/sendFileByEmail.php';
+                    break;
+                //*********************    
+                //**    RemoveFileOnServer
+                //*********************    
+                case 'RemoveFileOnServer':
+                    error_log("RemoveFileOnServer");
+                    //include_once 'controleurs/RemoveFileOnServer.php';
+                    break;
+                }
+            }
         exit;
     }
     //throw new Exception('Content type must be: application/json');
@@ -123,7 +144,7 @@ if (array_key_exists("TREATMENT",$decoded)){
 }else{
     $Treatment = $vide;
 }
-//error_log("traitement => " . $Treatment);
+//error_log("index.php : traitement => " . $Treatment);
 
 if (array_key_exists("PSEUDO",$decoded)){
     $Pseudo = $decoded->{"PSEUDO"};
@@ -263,8 +284,22 @@ if ($Requete != ""){
         //**    liste
         //*********************    
         case 'liste':
-            error_log("liste des fichiers");
+            //error_log("liste des fichiers");
             include_once 'controleurs/liste.php';
+            break;
+        //*********************    
+        //**    SendFileByEmail
+        //*********************    
+        case 'SendFileByEmail':
+            error_log("SendFileByEmail");
+            //include_once 'controleurs/sendFileByEmail.php';
+            break;
+        //*********************    
+        //**    RemoveFileOnServer
+        //*********************    
+        case 'RemoveFileOnServer':
+            error_log("RemoveFileOnServer");
+            //include_once 'controleurs/RemoveFileOnServer.php';
             break;
         //*********************    
         //**    default
