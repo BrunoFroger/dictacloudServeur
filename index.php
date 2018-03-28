@@ -65,11 +65,10 @@ if(strcasecmp($contentType, $contentTypeJsonAttendu) != 0){
             $_SESSION['FILENAME'] = $Filename; 
             error_log("index.php : Filename = " . $Filename);
         }else{
-            error_log("index.php : Filename non positionne ");
-            exit;
+            $Filename = $vide;
         }
         if (isset($_POST['IMAGE'])) {
-            if ($_POST['IMAGE'] != "") {
+            if ($_POST['IMAGE'] != "" && $Filename != $vide) {
                 $imageData = $_POST['IMAGE'];
                 $ficHandle = fopen("downloads/". $Filename,"w");
                 fwrite($ficHandle,base64_decode($imageData));
