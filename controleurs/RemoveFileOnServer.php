@@ -38,14 +38,13 @@ $message = "fichier effacé\n";
 
 //error_log("RemoveFileOnServer.php : fin OK");
 
+//$tmp = exec("rm -f" . $Filename);
+error_log("RemoveFileOnServer.php : resultat commande rm ($tmp)");
+$message = $tmp;
+
 echo $Requete . ":";
 echo $result . ":";
 echo $Pseudo . ":";
-
-//exit ;
-
-$tmp = exec("rm -f" . $Filename);
-///error_log("RemoveFileOnServer.php : resultat commande externe ($Filename)");
-
+echo $message . ":";
 exit;
 
