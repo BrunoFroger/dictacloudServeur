@@ -44,7 +44,7 @@ $result="OK";
 $message = "fichier effacé\n";
 
 //error_log("RemoveFileOnServer.php : fin OK");
-$commande = "rm -f" . $Filename;
+$commande = "rm -f " . $Filename;
 $tmp = exec($commande);
 //$tmp = "message de retour de rm";
 error_log("RemoveFileOnServer.php : resultat commande $commande = ($tmp)");
