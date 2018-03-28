@@ -67,7 +67,7 @@ if(strcasecmp($contentType, $contentTypeJsonAttendu) != 0){
         }else{
             $Filename = $vide;
         }
-        
+
         if (isset($_POST['IMAGE'])) {
             if ($_POST['IMAGE'] != "" && $Filename != $vide) {
                 $imageData = $_POST['IMAGE'];
@@ -90,7 +90,7 @@ if(strcasecmp($contentType, $contentTypeJsonAttendu) != 0){
                 //**    liste
                 //*********************    
                 case 'liste':
-                    error_log("index.php : liste des fichiers");
+                    //error_log("index.php : liste des fichiers");
                     include_once 'controleurs/liste.php';
                     break;
                 //*********************    
@@ -98,7 +98,7 @@ if(strcasecmp($contentType, $contentTypeJsonAttendu) != 0){
                 //*********************    
                 case 'SendFileByEmail':
                     error_log("index.php : SendFileByEmail");
-                    //include_once 'controleurs/sendFileByEmail.php';
+                    include_once 'controleurs/sendFileByEmail.php';
                     break;
                 //*********************    
                 //**    RemoveFileOnServer

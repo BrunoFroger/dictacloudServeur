@@ -48,8 +48,8 @@ echo $Pseudo . ":";
 
 //exit ;
 
-$Filename = "downloads/dictacloud." . $Pseudo . ".*";
-$tmp = exec("ls " . $Filename, $ListeFichiers);
+$Filename = "dictacloud." . $Pseudo . ".*";
+$tmp = exec("ls downloads/" . $Filename . " | cut -d '/' -f2", $ListeFichiers);
 ///error_log("liste : resultat commande externe ($Filename)");
 
 $index = 0;

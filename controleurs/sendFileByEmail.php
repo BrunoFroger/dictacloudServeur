@@ -11,7 +11,7 @@ set_include_path(get_include_path() . PATH_SEPARATOR . $myIncludePath);
 
 include_once ('modeles/Users/ClassUsers.php');
 
-//error_log("liste : debut");
+error_log("sendFileByEmail : debut");
 
 
 $content = trim(file_get_contents("php://input"));
@@ -19,15 +19,22 @@ $content = trim(file_get_contents("php://input"));
 
 header( 'content-type: text/html; charset=utf-8' );
 if (isset($_SESSION['REQUETE'])) {
-     $Requete = $_SESSION['REQUETE'];
-     //error_log("sendFileByEmail.php : recupere REQUETE " . $Requete);
+        $Requete = $_SESSION['REQUETE'];
+        error_log("sendFileByEmail.php : recupere REQUETE " . $Requete);
 } else {
         $Requete = " ";
 }
 
+if (isset($_SESSION['FILENAME'])) {
+        $Filename = $_SESSION['FILENAME'];
+        //error_log("RemoveFileOnServer.php : recupere FILENAME " . $Filename);
+} else {
+        $Filename = " ";
+}
+
 if (isset($_SESSION['PSEUDO'])) {
-     $Pseudo = $_SESSION['PSEUDO'];
-     //error_log("sendFileByEmail.php : recupere PSEUDO " . $Pseudo);
+        $Pseudo = $_SESSION['PSEUDO'];
+        error_log("sendFileByEmail.php : recupere PSEUDO " . $Pseudo);
 } else {
 	$Pseudo = " ";
 }
@@ -42,7 +49,7 @@ $message = "fichier traité dans sendFileByEmail\n";
 
 // TODO procedure d'envoi de mail
 
-error_log("envoi par mail");
+error_log("envoi par mail a " . $Email . " du fichier " . $Filename);
 $subject = "[Dictacloud] Votre photo : " . $Filename;
 $message = "Bonjour $Pseudo<br><br>"
         . "Voici, en pièce jointe, la photo que vous venez de prendre<br><br>"

@@ -19,8 +19,8 @@ $content = trim(file_get_contents("php://input"));
 
 header( 'content-type: text/html; charset=utf-8' );
 if (isset($_SESSION['REQUETE'])) {
-     $Requete = $_SESSION['REQUETE'];
-     //error_log("RemoveFileOnServer.php : recupere REQUETE " . $Requete);
+        $Requete = $_SESSION['REQUETE'];
+        //error_log("RemoveFileOnServer.php : recupere REQUETE " . $Requete);
 } else {
 	$Requete = " ";
 }
@@ -28,26 +28,26 @@ if (isset($_SESSION['REQUETE'])) {
 if (isset($_SESSION['FILENAME'])) {
         $Filename = $_SESSION['FILENAME'];
         //error_log("RemoveFileOnServer.php : recupere FILENAME " . $Filename);
-   } else {
-           $Filename = " ";
-   }
+} else {
+        $Filename = " ";
+}
 
-   if (isset($_SESSION['PSEUDO'])) {
+if (isset($_SESSION['PSEUDO'])) {
         $Pseudo = $_SESSION['PSEUDO'];
         //error_log("storePhoto2.php : recupere PSEUDO " . $Pseudo);
-   } else {
-           $Pseudo = " ";
-   }
+} else {
+        $Pseudo = " ";
+}
    
 $result="OK";
 
 $message = "fichier effacé\n";
 
-//error_log("RemoveFileOnServer.php : fin OK");
-$commande = "rm -f " . $Filename;
+//error_log("RemoveFileOnServer.php : " . $Requete . ":" . $Pseudo . ":" . $Filename);
+$commande = "rm -f downloads/" . $Filename;
 $tmp = exec($commande);
 //$tmp = "message de retour de rm";
-error_log("RemoveFileOnServer.php : resultat commande $commande = ($tmp)");
+//error_log("RemoveFileOnServer.php : resultat commande $commande = ($tmp)");
 $message = "Fichier effacé sur le serveur";
 
 echo $Requete . ":";
