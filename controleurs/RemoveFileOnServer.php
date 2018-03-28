@@ -32,6 +32,13 @@ if (isset($_SESSION['FILENAME'])) {
            $Filename = " ";
    }
 
+   if (isset($_SESSION['PSEUDO'])) {
+        $Pseudo = $_SESSION['PSEUDO'];
+        //error_log("storePhoto2.php : recupere PSEUDO " . $Pseudo);
+   } else {
+           $Pseudo = " ";
+   }
+   
 $result="OK";
 
 $message = "fichier effacé\n";
@@ -39,6 +46,7 @@ $message = "fichier effacé\n";
 //error_log("RemoveFileOnServer.php : fin OK");
 
 //$tmp = exec("rm -f" . $Filename);
+$tmp = "message de retour de rm";
 error_log("RemoveFileOnServer.php : resultat commande rm ($tmp)");
 $message = $tmp;
 
