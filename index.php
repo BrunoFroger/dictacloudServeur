@@ -281,7 +281,14 @@ if ($Requete != ""){
         case 'sendPhoto':
             include_once 'controleurs/storePhoto2.php';
             break;
-        //*********************    
+        //*********************
+        //**    send Audio
+        //*********************
+        case 'startAudio':
+            error_log("startAudio");
+            include_once 'controleurs/storeAudio.php';
+            break;
+        //*********************
         //**    liste
         //*********************    
         case 'liste':
