@@ -48,14 +48,14 @@ if(strcasecmp($contentType, $contentTypeJsonAttendu) != 0){
         if (isset($_POST['REQUETE'])){
             $Requete = $_POST{"REQUETE"};
             $_SESSION['REQUETE'] = $Requete;
-            //error_log("index.php : Requete = " . $Requete);
+            error_log("index.php : Requete = " . $Requete);
         }else{
             $Requete = $vide;
         }
         if (isset($_POST["TREATMENT"])){
             $Treatment = $_POST["TREATMENT"];
             $_SESSION['TREATMENT'] = $Treatment;
-            error_log("traitement => " . $Treatment);
+            error_log("index.php : traitement => " . $Treatment);
         }else{
             $Treatment = $vide;
         }
@@ -85,6 +85,7 @@ if(strcasecmp($contentType, $contentTypeJsonAttendu) != 0){
         }
 
         if ($Requete != $vide){
+            error_log("index.php : analyse de la requete " . $Requete);
             switch ($Requete){
                 //*********************    
                 //**    liste
@@ -106,6 +107,14 @@ if(strcasecmp($contentType, $contentTypeJsonAttendu) != 0){
                 case 'RemoveFileOnServer':
                     error_log("index.php : RemoveFileOnServer");
                     include_once 'controleurs/RemoveFileOnServer.php';
+                    break;
+                //*********************
+                //**    send Audio
+                //*********************
+                case 'startAudio':
+                case 'stopAudio':
+                    error_log("index.php lancement de storeAudio avec " . $requete);
+                    include_once 'controleurs/storeAudio.php';
                     break;
                 }
             }
@@ -280,13 +289,6 @@ if ($Requete != ""){
         //*********************    
         case 'sendPhoto':
             include_once 'controleurs/storePhoto2.php';
-            break;
-        //*********************
-        //**    send Audio
-        //*********************
-        case 'startAudio':
-            error_log("startAudio");
-            include_once 'controleurs/storeAudio.php';
             break;
         //*********************
         //**    liste

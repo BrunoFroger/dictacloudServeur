@@ -50,6 +50,8 @@ if (isset($_SESSION['FILENAME'])) {
 $user = new User($Pseudo, "", "");
 $user->checkPseudo($Pseudo);
 
+// calcul du port pour l'envoi des flux audio
+
 
 // reponse OK vers application android 
 
@@ -57,13 +59,13 @@ $result="OK";
 
 $message = "photo traitée dans storeAudio\n";
 
-//error_log("storeAudio.php : fin OK");
+$reponse = $Requete . ":" .
+        $result . ":" .
+        $message . ":" .
+        $port;
 
-echo $Requete . ":";
-echo $result . ":";
-echo $Pseudo . ":";
-echo $Filename . ":";
-echo $message;
+error_log("storeAudio.php : message de retour : " . $reponse);
+echo $reponse;
 
 flush();
 //exit ;
