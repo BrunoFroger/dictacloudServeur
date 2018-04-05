@@ -111,10 +111,15 @@ if(strcasecmp($contentType, $contentTypeJsonAttendu) != 0){
                 //*********************
                 //**    send Audio
                 //*********************
-                case 'startAudio':
-                case 'stopAudio':
-                    error_log("index.php lancement de storeAudio avec " . $requete);
+                case 'sendAudio':
+                    error_log("index.php lancement de storeAudio avec " . $Requete);
                     include_once 'controleurs/storeAudio.php';
+                    break;
+                //*********************
+                //**    default
+                //*********************
+                default:
+                    error_log("index.php requete inconnue : " . $Requete);
                     break;
                 }
             }
