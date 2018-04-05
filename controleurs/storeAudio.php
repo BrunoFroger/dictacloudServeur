@@ -51,14 +51,16 @@ $user = new User($Pseudo, "", "");
 $user->checkPseudo($Pseudo);
 
 // calcul du port pour l'envoi des flux audio
-$port = 55025;
+$port = 50005;
 
+// lancement du process d'acquisition des fluxs audio
 
 // reponse OK vers application android 
 
+
 $result="OK";
 
-$message = "photo traitee dans storeAudio\n";
+$message = "photo traitee dans storeAudio";
 
 $reponse = $Requete . ":" .
         $result . ":" .
