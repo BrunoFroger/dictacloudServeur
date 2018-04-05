@@ -63,6 +63,7 @@ $message = "photo traitee dans storeAudio\n";
 $reponse = $Requete . ":" .
         $result . ":" .
         $port . ":" .
+        $treatment . ":" .
         $message . ":";
 
 error_log("storeAudio.php : message de retour : " . $reponse);
