@@ -60,7 +60,7 @@ $port = 50505;
 
 $result="OK";
 
-$message = "photo traitee dans storeAudio";
+$message = "demande traitee dans storeAudio";
 
 $reponse = $Requete . ":" .
         $result . ":" .
