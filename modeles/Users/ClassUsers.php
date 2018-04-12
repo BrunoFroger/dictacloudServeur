@@ -14,11 +14,19 @@ class User {
     private $Pseudo;
     private $Email;
     private $Passwd;
+    private $Port;
 
     public function User($myPseudo, $myEmail, $myPasswd){
         $this->Pseudo = $myPseudo;
         $this->Email = $myEmail;
         $this->Passwd = $myPasswd;
+    }
+
+    private function getNewPort(){
+        // todo scanner les ports utilises et 
+        // donner le plus petit au dessus de 50505
+        $newPort = 50507;
+        return $newPort;
     }
 
     public function getEmail(){
@@ -30,6 +38,7 @@ class User {
         echo "Pseudo   = " . $this->Pseudo . "\n";
         echo "Email    = " . $this->Email . "\n";
         echo "Passwd   = " . $this->Passwd . "\n";
+        echo "Port     = " . $this->Port . "\n";
     }
 
     public function result($requete, $result){
@@ -39,6 +48,7 @@ class User {
         echo ',"RESULT":"' . $result . "\"";
         echo ',"PSEUDO":"' . $this->Pseudo . "\"";
         echo ',"EMAIL":"' . $this->Email . "\"";
+        echo ',"PORT":"' . $this->Port . "\"";
         echo "}";
         //echo "\n";
     }
@@ -49,19 +59,11 @@ class User {
 
     }
 
-    /*
-    public function result($requete, $result){
-        echo $requete . ":";
-        echo $result . ":";
-        echo $this->Pseudo . ":";
-        echo $this->Email . ":";
-        //echo "\n";
-    }*/
-
     private function clear(){
         $this->Pseudo="";
         $this->Email = "";
         $this->Passwd = "";
+        $this->Port = 0;
     }
 
     public function getUserByPseudo($pseudo){
@@ -123,6 +125,7 @@ class User {
                     $this->Pseudo = $monItem['pseudo'];
                     $this->Email = $monItem['email'];
                     $this->Passwd = $monItem['password'];
+                    $this->Port = $monItem['port'];
                 }
                 return true;
             } else {
@@ -161,9 +164,10 @@ class User {
     }
 
     public function create() {
-        $requete = "insert into users (pseudo, email, password) "
+        $this->Port = getNewPort();
+        $requete = "insert into users (pseudo, email, password, port) "
                 . "values ('$this->Pseudo', '$this->Email', "
-                . "'$this->Passwd')";
+                . "'$this->Passwd', '$this->Port')";
         //$this->display();
         //echo ("requete = $requete \n");
         try {
@@ -217,8 +221,9 @@ class User {
 
     function updateBase() {
         $requete = "update users set pseudo='$this->Pseudo', "
-                . "Email='$this->email' "
-                . "Passwd='$this->password'";
+                . "Email='$this->Email' "
+                . "Passwd='$this->Password'"
+                . "Port='$this->Port'";
         //echo ("<p>requete = $requete </p>");
         try {
             $dbh = new PDO(SERVEUR, USER, PWD);

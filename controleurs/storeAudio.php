@@ -51,7 +51,7 @@ $user = new User($Pseudo, "", "");
 $user->checkPseudo($Pseudo);
 
 // calcul du port pour l'envoi des flux audio
-$port = 50505;
+$port = $user->$port;
 
 // lancement du process d'acquisition des fluxs audio
 
