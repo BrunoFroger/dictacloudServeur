@@ -48,14 +48,14 @@ if(strcasecmp($contentType, $contentTypeJsonAttendu) != 0){
         if (isset($_POST['REQUETE'])){
             $Requete = $_POST{"REQUETE"};
             $_SESSION['REQUETE'] = $Requete;
-            error_log("index.php : Requete = " . $Requete);
+            //error_log("index.php : Requete = " . $Requete);
         }else{
             $Requete = $vide;
         }
         if (isset($_POST["TREATMENT"])){
             $Treatment = $_POST["TREATMENT"];
             $_SESSION['TREATMENT'] = $Treatment;
-            error_log("index.php : traitement => " . $Treatment);
+            //error_log("index.php : traitement => " . $Treatment);
         }else{
             $Treatment = $vide;
         }
@@ -63,7 +63,7 @@ if(strcasecmp($contentType, $contentTypeJsonAttendu) != 0){
         if (isset($_POST['FILENAME'])){
             $Filename = $_POST['FILENAME'];
             $_SESSION['FILENAME'] = $Filename; 
-            error_log("index.php : Filename = " . $Filename);
+            //error_log("index.php : Filename = " . $Filename);
         }else{
             $Filename = $vide;
         }
@@ -85,7 +85,7 @@ if(strcasecmp($contentType, $contentTypeJsonAttendu) != 0){
         }
 
         if ($Requete != $vide){
-            error_log("index.php : analyse de la requete " . $Requete);
+            //error_log("index.php : analyse de la requete " . $Requete);
             switch ($Requete){
                 //*********************    
                 //**    liste
@@ -98,21 +98,21 @@ if(strcasecmp($contentType, $contentTypeJsonAttendu) != 0){
                 //**    SendFileByEmail
                 //*********************    
                 case 'SendFileByEmail':
-                    error_log("index.php : SendFileByEmail");
+                    //error_log("index.php : SendFileByEmail");
                     include_once 'controleurs/sendFileByEmail.php';
                     break;
                 //*********************    
                 //**    RemoveFileOnServer
                 //*********************    
                 case 'RemoveFileOnServer':
-                    error_log("index.php : RemoveFileOnServer");
+                    //error_log("index.php : RemoveFileOnServer");
                     include_once 'controleurs/RemoveFileOnServer.php';
                     break;
                 //*********************
                 //**    send Audio
                 //*********************
                 case 'sendAudio':
-                    error_log("index.php lancement de storeAudio avec " . $Requete);
+                    //error_log("index.php lancement de storeAudio avec " . $Requete);
                     include_once 'controleurs/storeAudio.php';
                     break;
                 //*********************

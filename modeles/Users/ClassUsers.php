@@ -33,6 +33,10 @@ class User {
         return $this->Email;
     }
 
+    public function getPort(){
+        return $this->Port;
+    }
+
     public function display(){
         echo "Objet User :\n";
         echo "Pseudo   = " . $this->Pseudo . "\n";

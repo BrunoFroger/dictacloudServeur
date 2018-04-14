@@ -51,9 +51,12 @@ $user = new User($Pseudo, "", "");
 $user->checkPseudo($Pseudo);
 
 // calcul du port pour l'envoi des flux audio
-$port = $user->$port;
+$port = $user->getPort();
 
 // lancement du process d'acquisition des fluxs audio
+$cmd = "php recordMedia.php?FILENAME=" . $Filename . " PORT=" . $port;
+error_log("execution de la commande : " . $cmd);
+exec($cmd);
 
 // reponse OK vers application android 
 
