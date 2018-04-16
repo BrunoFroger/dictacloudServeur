@@ -49,8 +49,11 @@ echo $Pseudo . ":";
 //exit ;
 
 $Filename = "dictacloud." . $Pseudo . ".*";
-$tmp = exec("ls downloads/" . $Filename . " | cut -d '/' -f2", $ListeFichiers);
-///error_log("liste : resultat commande externe ($Filename)");
+//$tmp = exec("ls -l downloads/" . $Filename . " | cut -d '/' -f2", $ListeFichiers);
+$tmp = exec("du --apparent-size downloads/" . $Filename, $ListeFichiers);
+//$tmp = str_replace('\t','?',$tmp);
+
+//error_log("liste : resultat commande externe ($Filename)");
 
 $index = 0;
 //error_log("nombre de fichier : " . count($ListeFichiers));

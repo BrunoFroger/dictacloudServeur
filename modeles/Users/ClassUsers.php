@@ -34,15 +34,16 @@ class User {
     }
 
     public function getPort(){
+        //error_log("ClassUsers.php : getPort : " . $this->Port);
         return $this->Port;
     }
 
     public function display(){
-        echo "Objet User :\n";
-        echo "Pseudo   = " . $this->Pseudo . "\n";
-        echo "Email    = " . $this->Email . "\n";
-        echo "Passwd   = " . $this->Passwd . "\n";
-        echo "Port     = " . $this->Port . "\n";
+        error_log("Objet User :");
+        error_log("Pseudo   = " . $this->Pseudo);
+        error_log("Email    = " . $this->Email);
+        error_log("Passwd   = " . $this->Passwd);
+        error_log("Port     = " . $this->Port);
     }
 
     public function result($requete, $result){
@@ -76,20 +77,22 @@ class User {
 
     public function checkPseudo($pseudo){
         //error_log("check Pseudo (" . $pseudo . ")\n");
-        $requete = "select * from users where (Pseudo='" . $pseudo . "') ";
+        $requete = "select * from users where (pseudo='" . $pseudo . "') ";
         //error_log("check Pseudo requete = (" . $requete . ")\n");
         if ($this->getRequete($requete)){
             //$this->display();
             if ($this->Pseudo == $pseudo){
+                //error_log("ClassUsers.php : checkPseudo : OK");
                 return true;
             }
         }
+        error_log("ClassUsers.php : checkPseudo : KO");
         return false;
     }
 
     public function checkPasswd($pseudo, $passwd){
         //error_log("check Passwd (" . $passwd . ")\n");
-        $requete = "select * from users where (Pseudo='" . $pseudo . "') ";
+        $requete = "select * from users where (pseudo='" . $pseudo . "') ";
         //error_log("check Passwd requete = (" . $requete . ")\n");
         if ($this->getRequete($requete)){
             //$this->display();
@@ -121,7 +124,7 @@ class User {
 
             $mesItems = $dbh->query($requete);
             $dbh = null;
-            //error_log("requete executee = " . $requete . "</p>\n");
+            //error_log("ClassUsers.php : getRequete : requete executee = " . $requete);
             $mesItems->setFetchMode(PDO::FETCH_ASSOC);
             if ($mesItems->rowCount() > 0) {
                 foreach ($mesItems as $monItem) {
@@ -136,7 +139,7 @@ class User {
                 return false;
             }
         } catch (PDOException $e) {
-            echo "une erreur est survenue : " . $e->getMessage();
+            error_log("ClassUsers.php : getRequete : une erreur est survenue : " . $e->getMessage());
             return false;
         }
     }
@@ -162,7 +165,7 @@ class User {
                 return false;
             }
         } catch (PDOException $e) {
-            echo "une erreur est survenue : " . $e->getMessage();
+            error_log("ClassUsers.php : getRequeteList : une erreur est survenue : " . $e->getMessage());
             return false;
         }
     }
@@ -190,7 +193,7 @@ class User {
                 return false;
             }
         } catch (PDOException $e) {
-            echo "<p>une erreur est survenue lors de la creation du user : " . $e->getMessage();
+            error_log("ClassUsers.php : create : une erreur est survenue : " . $e->getMessage());
             return false;
         }
         return false;
@@ -217,7 +220,7 @@ class User {
                 return false;
             }
         } catch (PDOException $e) {
-            echo "<p>une erreur est survenue lors de la creation du user : " . $e->getMessage();
+            error_log("ClassUsers.php : delete : une erreur est survenue : " . $e->getMessage());
             return false;
         }
         return false;
@@ -246,7 +249,7 @@ class User {
                 return false;
             }
         } catch (PDOException $e) {
-            echo "<p>une erreur est survenue lors de la mise a jour du user : " . $e->getMessage();
+            error_log("ClassUsers.php : update : une erreur est survenue : " . $e->getMessage());
             return false;
         }
         return false;

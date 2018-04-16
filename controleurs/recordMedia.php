@@ -9,8 +9,6 @@
 $myIncludePath = '/var/www/html/dictacloud';
 set_include_path(get_include_path() . PATH_SEPARATOR . $myIncludePath); 
 
-include_once ('modeles/Users/ClassUsers.php');
-
 error_log("recordMedia : debut");
 
 $vide = " ";
@@ -46,12 +44,22 @@ if (isset($_GET['PORT'])){
 error_log("recordMedia.php : Filename   = " . $Filename);
 error_log("recordMedia.php : Port       = " . $Port);
 
-$file = fopen($Filename , "wb");
+$file = fopen("downloads/" . $Filename , "wb");
 error_log("recordMedia.php : fichier de sortie cree " . $Filename);
 
 $mySocket = socket_create_listen($Port);
-socket_accept ($mySocket);
-error_log("recordMedia.php : socket ouvert sur port " . $Port);
+if ($mySocket != false){
+    error_log("recordMedia.php : socket_create_listen OK");
+}else{
+    error_log("recordMedia.php : socket_create_listen KO");
+}
+
+$mySocket=socket_accept ($mySocket);
+if ($mySocket != false){
+    error_log("recordMedia.php : socket_accept OK");
+}else{
+    error_log("recordMedia.php : socket_accept KO");
+}
 
 $data = socket_read($mySocket, 1000);
 while ($data != false){
