@@ -25,6 +25,24 @@ class User {
     private function getNewPort(){
         // todo scanner les ports utilises et 
         // donner le plus petit au dessus de 50505
+        /*
+        $requete="select port from users order by port";
+        $lastPort = intval("50505");
+        $listPort = $this->getRequeteList($requete);
+        print_r($listPort);
+        if ($listPort){
+            foreach ($listPort as $item){
+                $portItem=intval($item);
+                if ($lastPort = 0){
+                    $lastPort = $portItem;
+                }
+                $newport=$lastPort + 1;
+                if ($portItem > $newport){
+                    return $newPort;
+                }
+            }
+        }
+        */
         $newPort = 50507;
         return $newPort;
     }
@@ -171,7 +189,7 @@ class User {
     }
 
     public function create() {
-        $this->Port = getNewPort();
+        $this->Port = $this->getNewPort();
         $requete = "insert into users (pseudo, email, password, port) "
                 . "values ('$this->Pseudo', '$this->Email', "
                 . "'$this->Passwd', '$this->Port')";
