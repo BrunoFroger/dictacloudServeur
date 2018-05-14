@@ -57,7 +57,7 @@ $message = "Bonjour $Pseudo<br><br>"
         . "Le serveur Dictacloud<br><br>"
         . "PS : Mail envoyé par un robot, ne pas repondre à ce mail";
 file_put_contents("/tmp/mail.txt", "to: $Email\n");
-file_put_contents("/tmp/mail.txt", "from: Dictacloud <froger.popote@wanadoo.fr>\n", FILE_APPEND);
+file_put_contents("/tmp/mail.txt", "from: Dictacloud <Dictacloud.froger@wanadoo.fr>\n", FILE_APPEND);
 file_put_contents("/tmp/mail.txt", "subject: $subject\n", FILE_APPEND);
 file_put_contents("/tmp/mail.txt", "$message\n", FILE_APPEND);
 
