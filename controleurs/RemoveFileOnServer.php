@@ -43,11 +43,11 @@ $result="OK";
 
 $message = "fichier effacé\n";
 
-error_log("RemoveFileOnServer.php : " . $Requete . ":" . $Pseudo . ":" . $Filename);
+//error_log("RemoveFileOnServer.php : " . $Requete . ":" . $Pseudo . ":" . $Filename);
 $commande = "rm -f " . $Filename;
 $tmp = exec($commande);
 //$tmp = "message de retour de rm";
-error_log("RemoveFileOnServer.php : resultat commande <$commande> = <$tmp>");
+//error_log("RemoveFileOnServer.php : resultat commande <$commande> = <$tmp>");
 $message = "Fichier effacé sur le serveur";
 
 echo $Requete . ":";
