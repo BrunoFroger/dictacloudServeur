@@ -88,7 +88,7 @@ if ($treatment == "treatmentMail"){
                 //. " -e 'set ssl_starttls=yes'"
                 //. " -e 'set smtp_url=\"smtp.orange.fr::465\"'"
                 //. " -e 'set smtp_user=\"bruno.froger2\"'"
-                //. " -e 'set smtp_pass=\"3paul2fan\"'"
+                //. " -e 'set smtp_pass=\".....\"'"
                 //. " -e 'set hostname=\"wanadoo.fr\"'"
         $cmd = "mutt -H - -n "
                 . " -e 'set content_type=\"text/html\"'"

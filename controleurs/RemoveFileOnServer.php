@@ -43,7 +43,7 @@ $result="OK";
 
 $message = "fichier effacé\n";
 
-//error_log("RemoveFileOnServer.php : " . $Requete . ":" . $Pseudo . ":" . $Filename);
+error_log("RemoveFileOnServer.php : " . $Requete . ":" . $Pseudo . ":" . $Filename);
 $commande = "rm -f downloads/" . $Filename;
 $tmp = exec($commande);
 //$tmp = "message de retour de rm";
